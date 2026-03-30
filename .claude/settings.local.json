@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:colorlib.com)",
+      "WebFetch(domain:elements.envato.com)",
+      "WebFetch(domain:dev.to)",
+      "Bash(npm -v)",
+      "Bash(npx --version)",
+      "Bash(npx create-next-app@latest --help)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(rm -rf node_modules package-lock.json .next src public next.config.ts tsconfig.json package.json next-env.d.ts .gitignore .eslintrc* AGENTS.md eslint.config.mjs)",
+      "Bash(printf nnnn:*)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(yes \"\")"
+    ]
+  }
+}
