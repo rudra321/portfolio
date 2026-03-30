@@ -1,121 +1,153 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, GraduationCap, Briefcase, Sparkles } from "lucide-react";
 import { PERSONAL } from "@/data/personal";
 import { ALL_SKILLS } from "@/data/skills";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { Marquee } from "@/components/ui/Marquee";
-import { TextReveal } from "@/components/ui/TextReveal";
-import { StaggerContainer } from "@/components/ui/StaggerContainer";
 import { fadeInUp } from "@/lib/animations";
 
 export function About() {
   return (
-    <section id="about" className="relative px-6 py-32">
+    <section id="about" className="relative px-6 py-24 md:py-40">
       <div className="mx-auto max-w-6xl">
-        <TextReveal
-          text="About Me"
-          element="h2"
-          className="mb-16 text-3xl font-bold tracking-tight md:text-4xl"
-        />
+        {/* Section label */}
+        <motion.div
+          className="mb-16 flex items-center gap-4"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <span className="font-mono text-sm text-accent-cyan">01</span>
+          <span className="h-px w-12 bg-white/20" />
+          <span className="font-mono text-sm uppercase tracking-widest text-text-secondary">
+            About
+          </span>
+        </motion.div>
 
-        <StaggerContainer className="grid auto-rows-[minmax(140px,auto)] grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {/* Bio - spans 2 cols */}
-          <motion.div variants={fadeInUp} className="md:col-span-2 lg:col-span-2">
-            <GlassCard className="h-full" hover>
-              <p className="text-base leading-relaxed text-text-secondary md:text-lg">
-                {PERSONAL.bio}
+        {/* Two-column layout: text left, bento right */}
+        <div className="grid gap-16 lg:grid-cols-5">
+          {/* Left — big text */}
+          <motion.div
+            className="lg:col-span-3"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <p className="text-2xl font-medium leading-snug tracking-tight text-foreground md:text-3xl lg:text-4xl">
+              I build things end-to-end.
+              <span className="text-text-secondary">
+                {" "}From React Native apps to serverless backends
+                to AI engines that replace manual workflows.
+              </span>
+            </p>
+
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-text-secondary/80">
+              CS grad from BITS Pilani, currently a Product Engineer at Raaz
+              where I lead the full stack for a healthcare platform
+              serving 55,000+ users. Before that, I shipped browser-based ML
+              at GJ-Map and fraud detection systems at SuperPe.
+            </p>
+
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary/80">
+              Outside of code — I play competitive Ultimate Frisbee.
+              <span className="text-accent-cyan"> Gold medalist</span> at the
+              National Open Championship Series 2025 and National College
+              Championship 2023.
+            </p>
+          </motion.div>
+
+          {/* Right — detail cards, intentionally different styles */}
+          <div className="flex flex-col gap-4 lg:col-span-2">
+            {/* Education */}
+            <motion.div
+              className="rounded-xl border border-white/[0.06] p-5"
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <p className="font-mono text-[10px] uppercase tracking-widest text-text-secondary/50">
+                Education
               </p>
-            </GlassCard>
-          </motion.div>
+              <p className="mt-2 text-base font-medium">{PERSONAL.degree}</p>
+              <p className="text-sm text-text-secondary">
+                {PERSONAL.university}, {PERSONAL.campus}
+              </p>
+              <p className="text-sm text-text-secondary/60">{PERSONAL.gradYear}</p>
+            </motion.div>
 
-          {/* Location */}
-          <motion.div variants={fadeInUp}>
-            <GlassCard className="flex h-full flex-col items-start justify-between" hover>
-              <MapPin size={24} className="text-accent-cyan" />
-              <div className="mt-4">
-                <p className="font-mono text-xs uppercase tracking-wider text-text-secondary">
-                  Location
+            {/* Location + Status — side by side */}
+            <div className="grid grid-cols-2 gap-4">
+              <motion.div
+                className="rounded-xl bg-white/[0.03] p-5"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <p className="font-mono text-[10px] uppercase tracking-widest text-text-secondary/50">
+                  Based in
                 </p>
-                <p className="mt-1 text-lg font-semibold">{PERSONAL.location}</p>
-              </div>
-            </GlassCard>
-          </motion.div>
+                <p className="mt-2 text-base font-medium">{PERSONAL.location}</p>
+              </motion.div>
 
-          {/* Status */}
-          <motion.div variants={fadeInUp}>
-            <GlassCard className="flex h-full flex-col items-start justify-between" hover>
-              <Sparkles size={24} className="text-accent-purple" />
-              <div className="mt-4">
-                <p className="font-mono text-xs uppercase tracking-wider text-text-secondary">
+              <motion.div
+                className="rounded-xl bg-accent-cyan/[0.04] p-5"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <p className="font-mono text-[10px] uppercase tracking-widest text-text-secondary/50">
                   Status
                 </p>
-                <div className="mt-1 flex items-center gap-2">
-                  <span className="relative flex h-2.5 w-2.5">
+                <div className="mt-2 flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                    <span className="inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
+                    <span className="inline-flex h-2 w-2 rounded-full bg-green-500" />
                   </span>
-                  <p className="text-sm font-medium">{PERSONAL.status}</p>
+                  <p className="text-sm font-medium">Available</p>
                 </div>
-              </div>
-            </GlassCard>
-          </motion.div>
+              </motion.div>
+            </div>
 
-          {/* Tech Stack Marquee - spans full width */}
-          <motion.div
-            variants={fadeInUp}
-            className="md:col-span-3 lg:col-span-4"
-          >
-            <GlassCard className="overflow-hidden py-5" hover>
-              <p className="mb-3 px-6 font-mono text-xs uppercase tracking-wider text-text-secondary">
-                Tech Stack
+            {/* Fun fact card — personality */}
+            <motion.div
+              className="rounded-xl border border-accent-purple/10 bg-accent-purple/[0.03] p-5"
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <p className="text-sm leading-relaxed text-text-secondary">
+                &ldquo;Ship fast, fix faster&rdquo; — I care more about getting things
+                into users&apos; hands than writing perfect abstractions.
               </p>
-              <Marquee speed={25}>
-                {ALL_SKILLS.map((skill) => (
-                  <span
-                    key={skill}
-                    className="whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 font-mono text-sm text-text-secondary"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </Marquee>
-            </GlassCard>
-          </motion.div>
+            </motion.div>
+          </div>
+        </div>
 
-          {/* Education */}
-          <motion.div variants={fadeInUp} className="md:col-span-2">
-            <GlassCard className="flex h-full flex-col items-start justify-between" hover>
-              <GraduationCap size={24} className="text-accent-cyan" />
-              <div className="mt-4">
-                <p className="font-mono text-xs uppercase tracking-wider text-text-secondary">
-                  Education
-                </p>
-                <p className="mt-1 text-lg font-semibold">{PERSONAL.degree}</p>
-                <p className="text-sm text-text-secondary">
-                  {PERSONAL.university} &middot; {PERSONAL.gradYear}
-                </p>
-              </div>
-            </GlassCard>
-          </motion.div>
-
-          {/* Experience CTA */}
-          <motion.div variants={fadeInUp} className="md:col-span-1 lg:col-span-2">
-            <GlassCard className="flex h-full flex-col items-start justify-between" hover>
-              <Briefcase size={24} className="text-accent-purple" />
-              <div className="mt-4">
-                <p className="font-mono text-xs uppercase tracking-wider text-text-secondary">
-                  Experience
-                </p>
-                <p className="mt-1 text-lg font-semibold">3+ Years</p>
-                <p className="text-sm text-text-secondary">
-                  Building web applications
-                </p>
-              </div>
-            </GlassCard>
-          </motion.div>
-        </StaggerContainer>
+        {/* Tech marquee — full bleed, no card wrapper */}
+        <motion.div
+          className="mt-20 -mx-6"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <Marquee speed={25}>
+            {ALL_SKILLS.map((skill) => (
+              <span
+                key={skill}
+                className="whitespace-nowrap px-4 font-mono text-sm text-text-secondary/40"
+              >
+                {skill}
+              </span>
+            ))}
+          </Marquee>
+        </motion.div>
       </div>
     </section>
   );

@@ -49,7 +49,7 @@ body::after {
   z-index: 9999;
   pointer-events: none;
   opacity: 0.04;
-  background-image: url("/noise.svg");
+  background-image: url("/portfolio/noise.svg");
   background-repeat: repeat;
   background-size: 200px 200px;
 }

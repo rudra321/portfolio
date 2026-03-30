@@ -1,16 +1,14 @@
 "use client";
 
-import { PERSONAL } from "@/data/personal";
-
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] px-6 py-8">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
-        <p className="font-mono text-sm text-text-secondary">
-          &copy; {new Date().getFullYear()} {PERSONAL.name}
+    <footer className="px-6 pb-8 pt-16">
+      <div className="mx-auto flex max-w-6xl items-end justify-between">
+        <p className="font-mono text-xs text-text-secondary/30">
+          &copy; {new Date().getFullYear()}
         </p>
-        <p className="font-mono text-xs text-text-secondary/50">
-          Built with Next.js & Framer Motion
+        <p className="font-mono text-xs text-text-secondary/30">
+          Rudra Pratap Singh Chouhan
         </p>
       </div>
     </footer>

@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,40 +28,36 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled
-            ? "border-b border-white/[0.06] bg-background/60 backdrop-blur-xl"
+            ? "border-b border-white/[0.04] bg-background/70 backdrop-blur-xl"
             : "bg-transparent"
         )}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <MagneticButton strength={0.2}>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="font-mono text-lg font-bold tracking-tight text-foreground"
-            >
-              R<span className="text-accent-cyan">.</span>
-            </a>
-          </MagneticButton>
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="font-mono text-sm tracking-tight text-foreground"
+          >
+            rudra<span className="text-accent-cyan">.</span>
+          </a>
 
           {/* Desktop nav */}
           <ul className="hidden items-center gap-8 md:flex">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link, i) => (
               <li key={link.href}>
-                <MagneticButton strength={0.15}>
-                  <button
-                    onClick={() => handleNavClick(link.href)}
-                    className="group relative font-mono text-sm text-text-secondary transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                    <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent-cyan transition-all duration-300 group-hover:w-full" />
-                  </button>
-                </MagneticButton>
+                <button
+                  onClick={() => handleNavClick(link.href)}
+                  className="font-mono text-xs text-text-secondary/60 transition-colors hover:text-foreground"
+                >
+                  <span className="text-accent-cyan/50">0{i + 1}.</span>{" "}
+                  {link.label}
+                </button>
               </li>
             ))}
           </ul>
@@ -74,9 +69,9 @@ export function Navbar() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? (
-              <X size={24} className="text-foreground" />
+              <X size={20} className="text-foreground" />
             ) : (
-              <Menu size={24} className="text-foreground" />
+              <Menu size={20} className="text-foreground" />
             )}
           </button>
         </nav>
@@ -86,21 +81,21 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-background/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-start justify-center gap-6 bg-background/98 px-12 backdrop-blur-xl md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
           >
             {NAV_LINKS.map((link, i) => (
               <motion.button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="font-mono text-2xl text-text-secondary transition-colors hover:text-foreground"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: i * 0.1 }}
+                className="font-mono text-3xl font-light text-text-secondary transition-colors hover:text-foreground"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ delay: i * 0.05 }}
               >
                 {link.label}
               </motion.button>
