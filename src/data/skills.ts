@@ -6,27 +6,23 @@ export interface SkillCategory {
 export const SKILLS: SkillCategory[] = [
   {
     category: "Languages",
-    items: ["TypeScript", "JavaScript", "Python", "Rust", "Go", "SQL"],
+    items: ["Python", "TypeScript", "JavaScript", "C/C++", "SQL"],
   },
   {
     category: "Frontend",
-    items: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Three.js", "GSAP"],
+    items: ["React", "React Native (Expo)", "Next.js", "Tailwind CSS"],
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express", "FastAPI", "GraphQL", "tRPC", "Prisma"],
+    items: ["Node.js", "Express", "PostgreSQL", "DynamoDB", "MongoDB", "Redis", "Firebase"],
   },
   {
-    category: "Database",
-    items: ["PostgreSQL", "MongoDB", "Redis", "Supabase", "PlanetScale"],
+    category: "Cloud & DevOps",
+    items: ["AWS Lambda", "S3", "API Gateway", "DynamoDB", "Docker", "Supabase", "Vercel"],
   },
   {
-    category: "DevOps & Tools",
-    items: ["Docker", "AWS", "Vercel", "GitHub Actions", "Terraform", "Linux"],
-  },
-  {
-    category: "Design",
-    items: ["Figma", "Responsive Design", "UI/UX", "Accessibility", "Motion Design"],
+    category: "AI / ML",
+    items: ["LLMs (Claude, Groq)", "RAG", "ONNX Runtime", "YOLO", "Segment Anything Model", "WebAssembly"],
   },
 ];
 

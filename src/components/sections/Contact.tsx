@@ -36,7 +36,6 @@ function XIcon({ size = 18 }: { size?: number }) {
 const socialLinks = [
   { icon: GithubIcon, href: PERSONAL.socials.github, label: "GitHub" },
   { icon: LinkedinIcon, href: PERSONAL.socials.linkedin, label: "LinkedIn" },
-  { icon: XIcon, href: PERSONAL.socials.twitter, label: "Twitter" },
 ];
 
 export function Contact() {

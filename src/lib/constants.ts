@@ -7,9 +7,9 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SITE_METADATA = {
-  title: "Rudra Pratap Singh | Portfolio",
+  title: "Rudra Pratap Singh Chouhan | Product Engineer",
   description:
-    "Full-stack developer passionate about building beautiful, performant web applications.",
-  url: "https://rudrapratapsingh.dev",
-  ogImage: "/images/og.png",
+    "Product Engineer building full-stack systems at scale — healthcare platforms, AI workflows, and real-time infrastructure. BITS Pilani CS '23.",
+  url: "https://rudra321.github.io/portfolio",
+  ogImage: "/portfolio/images/og.png",
 };

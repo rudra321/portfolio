@@ -51,9 +51,16 @@ export function Experience() {
                   </p>
                   <h3 className="mt-2 text-xl font-semibold">{exp.role}</h3>
                   <p className="text-sm text-accent-purple">{exp.company}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                    {exp.description}
-                  </p>
+                  <ul className="mt-3 space-y-2">
+                    {exp.description.map((point, j) => (
+                      <li
+                        key={j}
+                        className="text-sm leading-relaxed text-text-secondary before:mr-2 before:inline-block before:text-accent-cyan before:content-['▹']"
+                      >
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {exp.technologies.map((tech) => (
                       <span

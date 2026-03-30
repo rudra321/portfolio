@@ -3,7 +3,6 @@ export interface Project {
   title: string;
   description: string;
   tags: string[];
-  image?: string;
   githubUrl?: string;
   liveUrl?: string;
   featured: boolean;
@@ -11,61 +10,51 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    id: "project-1",
-    title: "CloudSync",
+    id: "raaz-platform",
+    title: "Raaz Healthcare Platform",
     description:
-      "A real-time collaborative workspace with end-to-end encryption. Built with WebSockets, React, and a custom CRDT-based sync engine for seamless multi-user editing.",
-    tags: ["React", "Node.js", "WebSocket", "PostgreSQL"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+      "End-to-end healthcare platform serving 55,000+ users. React Native app, Express/TypeScript API, Supabase database, 10+ Lambda microservices, integrated payment and logistics pipeline with Razorpay, Shopify, and warehouse management systems.",
+    tags: ["React Native", "TypeScript", "AWS Lambda", "Supabase", "Redis", "Razorpay"],
     featured: true,
   },
   {
-    id: "project-2",
-    title: "Nexus AI",
+    id: "ai-clinical-engine",
+    title: "AI Clinical Assessment Engine",
     description:
-      "An AI-powered code review tool that integrates with GitHub. Analyzes pull requests for bugs, security vulnerabilities, and performance issues using LLMs.",
-    tags: ["Python", "FastAPI", "OpenAI", "GitHub API"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+      "AI-powered clinical assessment system with weighted scoring, branching logic, and severity analysis. Generates personalized PDF reports and diet charts via Claude and Groq APIs, replacing manual doctor workflows and cutting consultation prep time by 70%.",
+    tags: ["Claude API", "Groq", "Node.js", "TypeScript", "PDF Generation"],
     featured: true,
   },
   {
-    id: "project-3",
-    title: "PixelForge",
+    id: "gis-detection",
+    title: "Browser-Based GIS Object Detection",
     description:
-      "A browser-based image editor with layer support, filters, and export capabilities. Built entirely with Canvas API and Web Workers for non-blocking operations.",
-    tags: ["TypeScript", "Canvas API", "Web Workers", "Zustand"],
-    githubUrl: "https://github.com",
+      "Compiled C++ inference kernels to WebAssembly and integrated ONNX Runtime with Meta's Segment Anything Model for browser-based object detection on GIS imagery. Reduced detection time by 40% and eliminated server-side processing entirely.",
+    tags: ["WebAssembly", "ONNX Runtime", "SAM", "React", "C++"],
     featured: false,
   },
   {
-    id: "project-4",
-    title: "DevMetrics",
+    id: "call-center",
+    title: "Real-Time Call Center System",
     description:
-      "A developer analytics dashboard that tracks coding activity, language usage, and productivity patterns across repositories with beautiful data visualizations.",
-    tags: ["Next.js", "D3.js", "Prisma", "tRPC"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+      "Real-time call center infrastructure using Socket.io, DynamoDB, and SSE streaming. Connected Tata Tele telephony with Zoho CRM to automate appointment tracking and lead rescheduling across 200,000+ monthly calls.",
+    tags: ["Socket.io", "DynamoDB", "SSE", "Zoho CRM", "Node.js"],
     featured: false,
   },
   {
-    id: "project-5",
-    title: "Volt",
+    id: "fraud-dashboard",
+    title: "Fraud Detection Dashboard",
     description:
-      "A minimal, blazing-fast CLI task runner written in Rust. Supports parallel execution, dependency graphs, and incremental builds for monorepo workflows.",
-    tags: ["Rust", "CLI", "Tokio", "Serde"],
-    githubUrl: "https://github.com",
+      "Real-time fraud detection dashboard that flagged anomalous transactions before settlement, enabling support agents to intervene immediately. Reduced fraud losses by 50% at SuperPe.",
+    tags: ["React", "Node.js", "PostgreSQL", "Real-time"],
     featured: false,
   },
   {
-    id: "project-6",
-    title: "Aether UI",
+    id: "gis-apps",
+    title: "Enterprise GIS Applications",
     description:
-      "An open-source component library with 50+ accessible, themeable React components. Built with Radix primitives and Tailwind CSS with full dark mode support.",
-    tags: ["React", "Tailwind CSS", "Radix UI", "Storybook"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+      "6 production React applications for government and enterprise GIS teams. Built on ArcGIS SDK with real-time map layers, spatial queries, and custom data visualization dashboards.",
+    tags: ["React", "ArcGIS SDK", "Node.js", "SQL", "GIS"],
     featured: false,
   },
 ];
