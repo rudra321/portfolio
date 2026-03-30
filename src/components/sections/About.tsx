@@ -94,22 +94,16 @@ export function About() {
               </motion.div>
 
               <motion.div
-                className="rounded-xl bg-accent-cyan/[0.04] p-5"
+                className="rounded-xl bg-white/[0.03] p-5"
                 variants={fadeInUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
               >
                 <p className="font-mono text-[10px] uppercase tracking-widest text-text-secondary/50">
-                  Status
+                  Experience
                 </p>
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                    <span className="inline-flex h-2 w-2 rounded-full bg-green-500" />
-                  </span>
-                  <p className="text-sm font-medium">Available</p>
-                </div>
+                <p className="mt-2 text-base font-medium">3+ years</p>
               </motion.div>
             </div>
 
