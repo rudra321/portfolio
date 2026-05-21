@@ -2,8 +2,10 @@ export const PERSONAL = {
   name: "Rudra Pratap Singh Chouhan",
   firstName: "Rudra",
   title: "Product Engineer",
-  tagline: "I build products that scale — from healthcare platforms serving 55K+ users to browser-based AI systems.",
-  bio: "Product Engineer at Raaz, BITS Pilani CS grad, and Ultimate Frisbee national gold medalist. I specialize in building full-stack systems end-to-end — React Native apps, serverless backends, real-time infrastructure, and AI-powered workflows. I care deeply about shipping fast without compromising on quality.",
+  tagline:
+    "Product Engineer at Raaz. Healthcare software for 55,000+ patients.",
+  bio:
+    "I lead the React Native app and the Lambda backend behind a healthcare platform with 55,000+ patients at Raaz. Before that, browser-side ML at GJ-Map (ONNX in WebAssembly) and a real-time fraud engine at SuperPe. CS from BITS Pilani, 2023.",
   email: "rudrap5201@gmail.com",
   phone: "8619142679",
   location: "Bangalore, India",
@@ -11,7 +13,6 @@ export const PERSONAL = {
   campus: "South Goa, Goa",
   degree: "B.E. Computer Science",
   gradYear: "2023",
-  status: "Open to opportunities",
   resumeUrl: "/portfolio/resume.pdf",
   socials: {
     github: "https://github.com/rudra321",

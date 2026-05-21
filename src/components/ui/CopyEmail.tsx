@@ -23,7 +23,7 @@ export function CopyEmail({ email, className }: CopyEmailProps) {
     <button
       onClick={handleCopy}
       className={cn(
-        "group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3 font-mono text-sm text-text-secondary transition-all hover:border-accent-cyan/30 hover:text-foreground",
+        "group flex items-center gap-3 rounded-xl border border-card-border bg-card-bg px-5 py-3 font-mono text-sm text-text-secondary transition-all hover:border-accent/40 hover:text-foreground",
         className
       )}
     >
@@ -36,7 +36,7 @@ export function CopyEmail({ email, className }: CopyEmailProps) {
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
           >
-            <Check size={16} className="text-accent-cyan" />
+            <Check size={16} className="text-accent" />
           </motion.span>
         ) : (
           <motion.span

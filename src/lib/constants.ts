@@ -9,7 +9,7 @@ export const NAV_LINKS = [
 export const SITE_METADATA = {
   title: "Rudra Pratap Singh Chouhan | Product Engineer",
   description:
-    "Product Engineer building full-stack systems at scale — healthcare platforms, AI workflows, and real-time infrastructure. BITS Pilani CS '23.",
+    "Product Engineer at Raaz. Healthcare software for 55,000+ patients. Previously GJ-Map, SuperPe. BITS Pilani CS '23.",
   url: "https://rudra321.github.io/portfolio",
   ogImage: "/portfolio/images/og.png",
 };

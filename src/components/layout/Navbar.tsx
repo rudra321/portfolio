@@ -28,7 +28,7 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled
-            ? "border-b border-white/[0.04] bg-background/70 backdrop-blur-xl"
+            ? "border-b border-card-border bg-background/75 backdrop-blur-xl"
             : "bg-transparent"
         )}
         initial={{ y: -100 }}
@@ -42,21 +42,21 @@ export function Navbar() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="font-mono text-sm tracking-tight text-foreground"
+            className="font-serif text-xl italic tracking-tight text-foreground"
           >
-            rudra<span className="text-accent-cyan">.</span>
+            rudra
+            <span className="text-accent">.</span>
           </a>
 
           {/* Desktop nav */}
-          <ul className="hidden items-center gap-8 md:flex">
-            {NAV_LINKS.map((link, i) => (
+          <ul className="hidden items-center gap-7 md:flex">
+            {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <button
                   onClick={() => handleNavClick(link.href)}
-                  className="font-mono text-xs text-text-secondary/60 transition-colors hover:text-foreground"
+                  className="font-mono text-xs tracking-wide text-text-secondary/70 transition-colors hover:text-accent"
                 >
-                  <span className="text-accent-cyan/50">0{i + 1}.</span>{" "}
-                  {link.label}
+                  {link.label.toLowerCase()}
                 </button>
               </li>
             ))}
@@ -91,13 +91,13 @@ export function Navbar() {
               <motion.button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="font-mono text-3xl font-light text-text-secondary transition-colors hover:text-foreground"
+                className="font-serif text-4xl italic text-text-secondary transition-colors hover:text-accent"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ delay: i * 0.05 }}
               >
-                {link.label}
+                {link.label.toLowerCase()}.
               </motion.button>
             ))}
           </motion.div>

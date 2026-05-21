@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0A0F1C;
-  --foreground: #F1F5F9;
-  --accent-cyan: #22D3EE;
-  --accent-purple: #A855F7;
-  --text-secondary: #94A3B8;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --card-border: rgba(255, 255, 255, 0.1);
+  --background: #0B0A0E;
+  --foreground: #F5EFE4;
+  --accent: #E8A87C;
+  --accent-deep: #7C3AED;
+  --text-secondary: #8B8378;
+  --card-bg: rgba(255, 248, 235, 0.04);
+  --card-border: rgba(255, 248, 235, 0.08);
 }
 
 @keyframes marquee-left {
@@ -25,13 +25,14 @@
   --animate-marquee-right: marquee-right linear infinite;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent-cyan: var(--accent-cyan);
-  --color-accent-purple: var(--accent-purple);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
   --color-text-secondary: var(--text-secondary);
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif);
 }
 
 body {
@@ -41,38 +42,37 @@ body {
   overflow-x: hidden;
 }
 
-/* Noise grain overlay */
+/* Warm paper grain - subtle, not Figma-y */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.035;
   background-image: url("/portfolio/noise.svg");
   background-repeat: repeat;
   background-size: 200px 200px;
+  mix-blend-mode: overlay;
 }
 
-/* Smooth scroll override - Lenis handles this */
+/* Lenis handles smooth scroll */
 html {
   scroll-behavior: auto;
 }
 
-/* Hide default cursor on desktop when custom cursor is active */
+/* Custom cursor */
 @media (pointer: fine) and (hover: hover) {
   html.custom-cursor * {
     cursor: none !important;
   }
 }
 
-/* Selection styling */
 ::selection {
-  background: rgba(34, 211, 238, 0.3);
-  color: #F1F5F9;
+  background: rgba(232, 168, 124, 0.25);
+  color: var(--foreground);
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -82,15 +82,26 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.3);
+  background: rgba(139, 131, 120, 0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.5);
+  background: rgba(139, 131, 120, 0.5);
 }
 
-/* Reduced motion */
+/* Ghost numerals - big editorial section markers */
+.ghost-numeral {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(232, 168, 124, 0.06);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

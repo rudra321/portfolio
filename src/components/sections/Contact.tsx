@@ -8,45 +8,39 @@ import { fadeInUp } from "@/lib/animations";
 
 export function Contact() {
   return (
-    <section id="contact" className="relative px-6 py-24 md:py-40">
-      <div className="mx-auto max-w-6xl">
-        {/* Section label */}
-        <motion.div
-          className="mb-16 flex items-center gap-4"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <span className="font-mono text-sm text-accent-cyan">05</span>
-          <span className="h-px w-12 bg-white/20" />
-          <span className="font-mono text-sm uppercase tracking-widest text-text-secondary">
-            Contact
-          </span>
-        </motion.div>
+    <section id="contact" className="relative overflow-hidden px-6 py-32 md:py-44">
+      <span
+        aria-hidden
+        className="ghost-numeral pointer-events-none absolute -top-2 right-2 select-none text-[clamp(180px,28vw,360px)] md:right-10 md:top-6"
+      >
+        05
+      </span>
 
-        <div className="grid gap-16 lg:grid-cols-2">
-          {/* Left — message */}
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="grid gap-16 lg:grid-cols-[1.2fr_1fr]">
           <motion.div
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-              Got something
-              <br />
-              <span className="text-text-secondary/40">in mind?</span>
+            <h2 className="text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+              Say
+              <span className="font-serif italic text-accent"> hello</span>.
             </h2>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-text-secondary/70">
-              I&apos;m always interested in hearing about new projects and opportunities.
-              Drop me a line or find me on the usual platforms.
+            <p className="mt-8 max-w-md text-[20px] leading-[1.6] text-text-secondary">
+              Email is the best way to reach me. I read everything
+              and usually reply within a day. Hiring, collaboration,
+              or a stray question about compiling C++ to WebAssembly:
+              all welcome.
+            </p>
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-text-secondary/50">
+              Available from early 2026
             </p>
           </motion.div>
 
-          {/* Right — links */}
           <motion.div
-            className="flex flex-col justify-center gap-6"
+            className="flex flex-col justify-center gap-4"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
@@ -54,14 +48,14 @@ export function Contact() {
           >
             <CopyEmail email={PERSONAL.email} />
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col">
               <a
                 href={PERSONAL.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between border-b border-white/[0.06] py-3 text-text-secondary transition-colors hover:text-foreground"
+                className="group flex items-center justify-between border-b border-card-border py-4 text-text-secondary transition-colors hover:text-accent"
               >
-                <span className="text-sm">GitHub</span>
+                <span className="font-serif text-lg italic">GitHub</span>
                 <ArrowUpRight
                   size={16}
                   className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -71,9 +65,9 @@ export function Contact() {
                 href={PERSONAL.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between border-b border-white/[0.06] py-3 text-text-secondary transition-colors hover:text-foreground"
+                className="group flex items-center justify-between border-b border-card-border py-4 text-text-secondary transition-colors hover:text-accent"
               >
-                <span className="text-sm">LinkedIn</span>
+                <span className="font-serif text-lg italic">LinkedIn</span>
                 <ArrowUpRight
                   size={16}
                   className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -83,9 +77,9 @@ export function Contact() {
                 href={PERSONAL.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between border-b border-white/[0.06] py-3 text-text-secondary transition-colors hover:text-foreground"
+                className="group flex items-center justify-between border-b border-card-border py-4 text-text-secondary transition-colors hover:text-accent"
               >
-                <span className="text-sm">Resume</span>
+                <span className="font-serif text-lg italic">Resume</span>
                 <ArrowUpRight
                   size={16}
                   className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

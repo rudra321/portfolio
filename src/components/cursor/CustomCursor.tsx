@@ -35,7 +35,7 @@ export function CustomCursor() {
     <>
       {/* Dot */}
       <motion.div
-        className="fixed top-0 left-0 z-[10000] pointer-events-none rounded-full bg-accent-cyan"
+        className="fixed top-0 left-0 z-[10000] pointer-events-none rounded-full bg-accent"
         style={{
           x: dotX,
           y: dotY,
@@ -59,10 +59,10 @@ export function CustomCursor() {
           width: isHovering ? 56 : 40,
           height: isHovering ? 56 : 40,
           borderColor: isHovering
-            ? "rgba(34, 211, 238, 0.6)"
-            : "rgba(241, 245, 249, 0.3)",
+            ? "rgba(232, 168, 124, 0.65)"
+            : "rgba(245, 239, 228, 0.3)",
           backgroundColor: isHovering
-            ? "rgba(34, 211, 238, 0.08)"
+            ? "rgba(232, 168, 124, 0.10)"
             : "transparent",
         }}
         transition={{ duration: 0.2, ease: "easeOut" }}

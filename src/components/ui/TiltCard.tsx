@@ -17,13 +17,13 @@ export function TiltCard({ children, className, tiltDegree = 8 }: TiltCardProps)
   const reducedMotion = useReducedMotion();
   const { rotateX, rotateY, spotlightX, spotlightY } = useTiltEffect(ref, tiltDegree);
 
-  const spotlightBg = useMotionTemplate`radial-gradient(circle at ${spotlightX}% ${spotlightY}%, rgba(34,211,238,0.08) 0%, transparent 60%)`;
+  const spotlightBg = useMotionTemplate`radial-gradient(circle at ${spotlightX}% ${spotlightY}%, rgba(232,168,124,0.10) 0%, transparent 55%)`;
 
   if (reducedMotion) {
     return (
       <div
         className={cn(
-          "relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 backdrop-blur-xl",
+          "relative overflow-hidden rounded-2xl border border-card-border bg-card-bg p-6 backdrop-blur-xl",
           className
         )}
       >
@@ -36,7 +36,7 @@ export function TiltCard({ children, className, tiltDegree = 8 }: TiltCardProps)
     <motion.div
       ref={ref}
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 backdrop-blur-xl transition-colors duration-300 hover:border-accent-cyan/20",
+        "relative overflow-hidden rounded-2xl border border-card-border bg-card-bg p-6 backdrop-blur-xl transition-colors duration-300 hover:border-accent/25",
         className
       )}
       style={{

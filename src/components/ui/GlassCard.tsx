@@ -15,7 +15,7 @@ export function GlassCard({ children, className, hover = false }: GlassCardProps
       className={cn(
         "relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 backdrop-blur-xl",
         hover &&
-          "transition-all duration-300 hover:border-accent-cyan/30 hover:bg-white/[0.06] hover:shadow-[0_0_30px_rgba(34,211,238,0.05)]",
+          "transition-all duration-300 hover:border-accent/30 hover:bg-white/[0.06] hover:shadow-[0_0_30px_rgba(232,168,124,0.06)]",
         className
       )}
     >

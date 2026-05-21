@@ -4,20 +4,20 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface GradientBlobProps {
-  color?: "cyan" | "purple" | "blue";
+  color?: "amber" | "purple" | "ember";
   size?: string;
   className?: string;
   animate?: boolean;
 }
 
 const colorMap = {
-  cyan: "bg-cyan-500/20",
-  purple: "bg-purple-500/20",
-  blue: "bg-blue-500/15",
+  amber: "bg-[#E8A87C]/15",
+  purple: "bg-[#7C3AED]/12",
+  ember: "bg-[#B85C38]/14",
 };
 
 export function GradientBlob({
-  color = "cyan",
+  color = "amber",
   size = "500px",
   className,
   animate = true,
