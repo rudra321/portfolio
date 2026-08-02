@@ -1,13 +1,13 @@
 import { buildSystemPrompt } from "../prompt";
-import { CHAT_CONFIG } from "../config";
+import { CHAT_CONFIG, CHAT_ENDPOINT } from "../config";
 import { clog } from "../debug";
 import type { ChatProvider } from "../types";
 
-const ENDPOINT = process.env.NEXT_PUBLIC_CHAT_ENDPOINT;
+const ENDPOINT = CHAT_ENDPOINT;
 
-// Streams from our own Worker (which holds the Groq key). The system prompt is
-// added here so the persona/guardrails live in one place; the Worker just maps
-// roles and forwards to Groq, returning Groq's OpenAI-style SSE stream.
+// Streams from our own Worker (which holds the provider keys). The system prompt
+// is added here so the persona/guardrails live in one place; the Worker tries
+// its provider chain (Claude → Gemini → Groq) and returns OpenAI-style SSE.
 export const proxyProvider: ChatProvider = {
   id: "proxy",
   async *streamReply(messages, signal) {

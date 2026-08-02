@@ -9,6 +9,8 @@
 // → prints the whole session (every route, retrieval score, which provider
 //   answered, and the raw replies) AND copies it to your clipboard to share.
 
+import { CHAT_ENDPOINT } from "./config";
+
 export function chatDebugEnabled(): boolean {
   if (typeof window === "undefined") return false; // skip SSR / eval / node
   if (process.env.NEXT_PUBLIC_CHAT_DEBUG === "1") return true;
@@ -65,14 +67,14 @@ export function clog(scope: string, ...args: unknown[]): void {
 
 /** A copy-pasteable report of the whole session so far. */
 export function dumpChatDebug(): string {
-  const endpoint = process.env.NEXT_PUBLIC_CHAT_ENDPOINT;
+  const endpoint = CHAT_ENDPOINT;
   const header = [
     "===== CHAT DEBUG DUMP =====",
     `when:     ${new Date().toISOString()}`,
     `provider: ${
       endpoint
         ? `Worker @ ${endpoint}  (LLM tiers via the Worker, local engine as fallback)`
-        : "LOCAL ENGINE ONLY — NEXT_PUBLIC_CHAT_ENDPOINT is not set, so you are NOT talking to Gemini/Claude, only the offline fallback."
+        : "LOCAL ENGINE ONLY — no chat endpoint configured, so you are NOT talking to Gemini/Claude, only the offline fallback."
     }`,
     `entries:  ${BUFFER.length}`,
     "===========================",
