@@ -24,9 +24,8 @@ export function Contact() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-              Say
-              <span className="font-serif italic text-accent"> hello</span>.
+            <h2 className="font-serif text-3xl italic leading-tight text-foreground md:text-4xl">
+              Say <span className="text-accent">hello</span>.
             </h2>
             <p className="mt-8 max-w-md text-[20px] leading-[1.6] text-text-secondary">
               Email is the best way to reach me. I read everything

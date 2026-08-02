@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Copy, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,22 +12,43 @@ interface CopyEmailProps {
 
 export function CopyEmail({ email, className }: CopyEmailProps) {
   const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(email);
+    try {
+      await navigator.clipboard.writeText(email);
+    } catch {
+      // Clipboard API can reject (insecure origin, denied permission). Fall back
+      // to selecting the text so the user can copy manually rather than failing
+      // silently.
+      window.prompt("Copy email:", email);
+      return;
+    }
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <button
+      type="button"
       onClick={handleCopy}
+      aria-label={`Copy email ${email} to clipboard`}
       className={cn(
         "group flex items-center gap-3 rounded-xl border border-card-border bg-card-bg px-5 py-3 font-mono text-sm text-text-secondary transition-all hover:border-accent/40 hover:text-foreground",
         className
       )}
     >
       <span>{email}</span>
+      <span aria-live="polite" className="sr-only">
+        {copied ? "Copied to clipboard" : ""}
+      </span>
       <AnimatePresence mode="wait">
         {copied ? (
           <motion.span

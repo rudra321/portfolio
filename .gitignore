@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cloudflare Worker local secrets
+.dev.vars
+.wrangler/
+
+# eval output artifacts
+/eval/results/

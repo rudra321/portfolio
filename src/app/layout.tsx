@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif, Space_Grotesk } from "next/font/google";
+import { Geist_Mono, Instrument_Serif, Space_Grotesk } from "next/font/google";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/LenisProvider";
-import { CursorProvider } from "@/components/providers/CursorProvider";
-import { CustomCursor } from "@/components/cursor/CustomCursor";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { SITE_METADATA } from "@/lib/constants";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -32,7 +26,12 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
+// Absolute, basePath-aware URL to the committed static OG image. (Next does not
+// prepend basePath to metadata image URLs, so it is spelled out here.)
+const ogImage = `${SITE_METADATA.url}/og.png`;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_METADATA.origin),
   title: SITE_METADATA.title,
   description: SITE_METADATA.description,
   openGraph: {
@@ -41,11 +40,13 @@ export const metadata: Metadata = {
     url: SITE_METADATA.url,
     siteName: SITE_METADATA.title,
     type: "website",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: SITE_METADATA.title }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_METADATA.title,
     description: SITE_METADATA.description,
+    images: [ogImage],
   },
 };
 
@@ -57,18 +58,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${geistMono.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full">
-        <CursorProvider>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[10001] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-background"
+        >
+          Skip to content
+        </a>
+        <MotionConfig reducedMotion="user">
           <LenisProvider>
-            <CustomCursor />
             <ScrollProgress />
             <Navbar />
-            <main>{children}</main>
+            <main id="main">{children}</main>
             <Footer />
           </LenisProvider>
-        </CursorProvider>
+        </MotionConfig>
       </body>
     </html>
   );

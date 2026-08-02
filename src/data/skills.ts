@@ -14,15 +14,19 @@ export const SKILLS: SkillCategory[] = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express", "PostgreSQL", "DynamoDB", "MongoDB", "Redis", "Firebase"],
+    items: ["Node.js", "Express", "PostgreSQL", "DynamoDB", "MongoDB", "Redis", "Django", "Firebase"],
   },
   {
     category: "Cloud & DevOps",
-    items: ["AWS Lambda", "S3", "API Gateway", "DynamoDB", "Docker", "Supabase", "Vercel"],
+    items: ["AWS Lambda", "S3", "API Gateway", "EventBridge", "CloudWatch", "Docker", "Supabase", "Vercel", "Fly.io"],
   },
   {
     category: "AI / ML",
-    items: ["LLMs (Claude, Groq)", "RAG", "ONNX Runtime", "YOLO", "Segment Anything Model", "WebAssembly"],
+    items: ["LLMs (Claude, Groq, GPT-4o-mini)", "Voice AI (Vapi, Smallest AI)", "RAG", "ONNX Runtime", "Segment Anything Model", "WebAssembly", "YOLO"],
+  },
+  {
+    category: "Integrations",
+    items: ["Razorpay", "Shopify", "Zoho CRM", "Meta CAPI", "Google Ads API", "WhatsApp Cloud API", "Puppeteer"],
   },
 ];
 

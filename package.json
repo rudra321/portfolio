@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "eval": "NODE_OPTIONS=\"--import ./src/lib/chat/eval/alias-register-only.mjs\" tsx src/lib/chat/eval/run.ts",
+    "eval:ci": "NODE_OPTIONS=\"--import ./src/lib/chat/eval/alias-register-only.mjs\" tsx src/lib/chat/eval/run.ts --provider=fixture --judge=rule --ci",
+    "eval:local": "NODE_OPTIONS=\"--import ./src/lib/chat/eval/alias-register-only.mjs\" tsx src/lib/chat/eval/run.ts --provider=local --judge=rule",
+    "eval:honesty": "NODE_OPTIONS=\"--import ./src/lib/chat/eval/alias-register-only.mjs\" tsx src/lib/chat/eval/honesty.ts"
   },
   "dependencies": {
-    "@gsap/react": "^2.1.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
-    "gsap": "^3.14.2",
     "lenis": "^1.3.21",
     "lucide-react": "^1.7.0",
     "next": "16.2.1",
@@ -28,6 +30,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
+    "tsx": "^4.22.4",
     "typescript": "^5"
   }
 }

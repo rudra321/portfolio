@@ -10,7 +10,7 @@ export function About() {
       {/* Ghost numeral - editorial marker, not eyebrow */}
       <span
         aria-hidden
-        className="ghost-numeral pointer-events-none absolute -top-2 right-2 select-none text-[clamp(180px,28vw,360px)] md:right-10 md:top-6"
+        className="ghost-numeral pointer-events-none absolute -top-2 right-2 select-none text-[clamp(120px,28vw,360px)] md:right-10 md:top-6"
       >
         01
       </span>
@@ -85,9 +85,9 @@ export function About() {
             </motion.div>
 
             {/* Years + Location side by side, both visually substantial */}
-            <div className="grid grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
               <motion.div
-                className="col-span-3 flex flex-col justify-between rounded-2xl border border-accent/20 bg-accent/[0.05] p-5"
+                className="col-span-1 flex flex-col justify-between rounded-2xl border border-accent/20 bg-accent/[0.05] p-5 sm:col-span-3"
                 variants={fadeInUp}
                 initial="hidden"
                 whileInView="visible"
@@ -96,13 +96,13 @@ export function About() {
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent/90">
                   Shipping for
                 </p>
-                <p className="mt-2 font-serif text-[40px] italic leading-none text-foreground">
+                <p className="mt-2 font-serif text-[34px] italic leading-none text-foreground sm:text-[40px]">
                   3<span className="text-accent">+</span> yrs
                 </p>
               </motion.div>
 
               <motion.div
-                className="col-span-2 flex flex-col justify-between rounded-2xl border border-card-border bg-card-bg p-5"
+                className="col-span-1 flex flex-col justify-between rounded-2xl border border-card-border bg-card-bg p-5 sm:col-span-2"
                 variants={fadeInUp}
                 initial="hidden"
                 whileInView="visible"

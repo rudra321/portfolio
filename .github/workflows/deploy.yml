@@ -32,6 +32,12 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Optional — set the CHAT_ENDPOINT repo secret (the Worker URL) to take
+          # the live LLM tiers live. Unset = the chat runs on the in-browser local
+          # engine (still fully usable). Provider API keys live in the Worker, never
+          # here — this is only ever a URL, never a key in the bundle.
+          NEXT_PUBLIC_CHAT_ENDPOINT: ${{ secrets.CHAT_ENDPOINT }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

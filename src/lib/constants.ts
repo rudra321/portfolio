@@ -1,15 +1,16 @@
 export const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
+  { label: "Ask", href: "#hero" },
+  { label: "Work", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
 export const SITE_METADATA = {
-  title: "Rudra Pratap Singh Chouhan | Product Engineer",
+  title: "Rudra Pratap Singh Chouhan | Lead Engineer",
   description:
-    "Product Engineer at Raaz. Healthcare software for 55,000+ patients. Previously GJ-Map, SuperPe. BITS Pilani CS '23.",
+    "Lead Engineer at Raaz. Healthcare software for 55,000+ patients. Previously GJ-Map, SuperPe. BITS Pilani CS '23.",
   url: "https://rudra321.github.io/portfolio",
-  ogImage: "/portfolio/images/og.png",
+  // Origin only — basePath (/portfolio) is appended automatically by Next for
+  // file-based metadata such as the generated opengraph-image.
+  origin: "https://rudra321.github.io",
 };

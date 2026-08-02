@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { cn } from "@/lib/utils";
 
 interface GradientBlobProps {
@@ -22,7 +23,9 @@ export function GradientBlob({
   className,
   animate = true,
 }: GradientBlobProps) {
-  if (!animate) {
+  const reducedMotion = useReducedMotion();
+
+  if (!animate || reducedMotion) {
     return (
       <div
         className={cn(

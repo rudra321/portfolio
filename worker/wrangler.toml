@@ -1,0 +1,22 @@
+name = "portfolio-chat"
+main = "chat.js"
+compatibility_date = "2026-01-01"
+
+# Secrets — set whichever providers you want (all optional). The Worker tries
+# them in PROVIDER_ORDER and uses the first that's configured + reachable:
+#   wrangler secret put GEMINI_API_KEY      # Gemini Flash — recommended FREE setup
+#   wrangler secret put GROQ_API_KEY        # Groq — free, but small daily cap (fallback)
+#   wrangler secret put ANTHROPIC_API_KEY   # Claude Haiku 4.5 — optional, paid, best quality
+#
+# No Anthropic key? The default order simply skips it and starts at Gemini.
+# If NONE are set, the browser still answers from its local engine — the chat
+# never hard-fails. Adding a key just upgrades the answer quality.
+#
+# Optional configuration:
+# [vars]
+# ANTHROPIC_MODEL  = "claude-haiku-4-5"
+# GEMINI_MODEL     = "gemini-flash-latest"   # alias → current free Flash
+# GEMINI_REASONING = "none"                  # none|low|medium|high (thinking budget)
+# GROQ_MODEL       = "llama-3.3-70b-versatile"
+# PROVIDER_ORDER   = "anthropic,gemini,groq"
+# ALLOWED_ORIGINS  = "https://rudra321.github.io,http://localhost:3000"

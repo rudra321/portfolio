@@ -13,23 +13,41 @@ export const PROJECTS: Project[] = [
     id: "raaz-platform",
     title: "Raaz Healthcare Platform",
     description:
-      "Healthcare platform used by 55,000+ patients. A React Native app, an Express/TypeScript API on Lambda, and a Supabase database. The same codebase handles payments through Razorpay, orders through Shopify, and warehouse handoff to Prozo and Proship.",
-    tags: ["React Native", "TypeScript", "AWS Lambda", "Supabase", "Redis", "Razorpay"],
+      "The healthcare platform I built and operate end to end for 55,000+ patients: a React Native app, an Express/TypeScript backend (204 endpoints), and Supabase. One order pipeline routes 120+ daily orders from app, web, and WhatsApp through a shared, forward-only payment state machine across Razorpay, Shopify, Prozo, and Proship, with every webhook handled idempotently against a central log so provider redeliveries can't corrupt state.",
+    tags: ["React Native", "TypeScript", "AWS Lambda", "Supabase", "PostgreSQL", "Razorpay"],
     featured: true,
   },
   {
     id: "ai-clinical-engine",
     title: "Clinical Assessment Engine",
     description:
-      "An assessment engine with weighted scoring, branching logic, and severity analysis. It generates PDF reports and diet plans through Claude and Groq, replaces a manual doctor workflow, and cut consultation prep time by 70%.",
+      "A deterministic 100-point clinical scoring engine — 9 weighted factors (IIEF-5, IELT, etiology, comorbidities) — that computes prognosis and a treatment cart, then hands the doctor a pre-filled record, cutting prep from 30 minutes to 10-15. All the math is in code; Claude and Groq only format the report and the Hinglish diet plan, after an early version let the LLM add up the scores and miscounted.",
     tags: ["Claude API", "Groq", "Node.js", "TypeScript", "PDF Generation"],
     featured: true,
+  },
+  {
+    id: "scout",
+    title: "Scout — Open-Source Job-Search Agent",
+    description:
+      "An open-source (MIT) job-search agent I built during my own job hunt and open-sourced: ~6,300 lines of TypeScript, no framework, a hand-rolled CLI and HTTP server. It pulls real openings straight from ATS APIs (Greenhouse, Lever, Ashby), HN 'Who is hiring', and RSS feeds — not job boards — scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails with MX-validated address guessing. Thesis: zero ghost jobs.",
+    tags: ["TypeScript", "Anthropic SDK", "CLI", "ATS APIs"],
+    githubUrl: "https://github.com/rudra321/find-me-a-job",
+    featured: true,
+  },
+  {
+    id: "mood-musica",
+    title: "MoodMusica — Map-First Music Discovery",
+    description:
+      "Tap anywhere on a world map, type a mood, and get an AI-curated color palette and eight real, region-appropriate songs with playable previews (Lagos + 'energetic night out' → Afrobeats). ~3,900 lines of Next.js with a hexagonal architecture (six swappable ports) and an anti-hallucination pipeline: every AI-suggested track is grounded in real Apple charts and verified against the iTunes API before it's shown. Free services only, no Spotify.",
+    tags: ["Next.js", "React", "Leaflet", "LLM", "iTunes API"],
+    githubUrl: "https://github.com/rudra321/mood-musica",
+    featured: false,
   },
   {
     id: "whatsapp-calendar",
     title: "WhatsApp Calendar Assistant",
     description:
-      "A WhatsApp bot that turns natural-language messages into Google Calendar events. Text \"meeting with Shivay tomorrow at 2pm\" and it creates the event, detects conflicts, adds a Meet link, and replies in plain English. Built on Bun and Hono with Groq for intent parsing, a hexagonal architecture so swapping providers is a one-file change, and self-service Google OAuth via a sign-in link the bot sends you.",
+      "A WhatsApp bot (~2,350 lines, Bun + Hono) that turns \"meeting with Shivay tomorrow at 2pm\" into a Google Calendar event with a Meet link and conflict detection. Groq parses intent into Zod-validated payloads; a hexagonal architecture with six port interfaces makes swapping providers a one-file change; and it does self-service Google OAuth over a sign-in link the bot sends you.",
     tags: ["TypeScript", "Bun", "Hono", "Groq", "Google Calendar API", "Fly.io"],
     githubUrl: "https://github.com/rudra321/whatsapp-calendar",
     featured: false,
@@ -38,23 +56,23 @@ export const PROJECTS: Project[] = [
     id: "gis-detection",
     title: "Browser-Based GIS Object Detection",
     description:
-      "Compiled C++ inference kernels to WebAssembly and paired ONNX Runtime with Meta's Segment Anything Model to run object detection on GIS imagery directly in the browser. It's 40% faster than the previous pipeline, with no server-side inference at all.",
+      "Compiled C++ inference kernels to WebAssembly and paired ONNX Runtime with Meta's Segment Anything Model to run object detection on GIS imagery directly in the browser. It cut end-to-end detection turnaround ~40% versus the server round-trip and eliminated server-side GPU compute entirely.",
     tags: ["WebAssembly", "ONNX Runtime", "SAM", "React", "C++"],
     featured: false,
   },
   {
     id: "call-center",
-    title: "Real-Time Call-Center System",
+    title: "Real-Time Voice-AI Call System",
     description:
-      "Real-time call-center infrastructure on Socket.io, DynamoDB, and SSE. It bridges Tata Tele telephony with Zoho CRM so appointment tracking and lead rescheduling happen automatically across 200,000+ calls a month.",
-    tags: ["Socket.io", "DynamoDB", "SSE", "Zoho CRM", "Node.js"],
+      "Voice-AI outreach on Vapi and Smallest AI handling 200,000+ calls a month across an auto-dialer, human agents, and AI bots. Event-triggered from app activity, with a P1-P6 time-priority ladder, transcript summaries forced into a machine-parseable token for deterministic extraction, and automatic CRM follow-up state plus live agent handoff over WebSocket/SSE, bridged into Zoho CRM.",
+    tags: ["Vapi", "Smallest AI", "Socket.io", "DynamoDB", "Zoho CRM"],
     featured: false,
   },
   {
     id: "fraud-dashboard",
     title: "Fraud-Detection Dashboard",
     description:
-      "A real-time dashboard that flagged anomalous transactions before settlement so support agents could intervene before money left the account. Fraud losses at SuperPe dropped by half.",
+      "A real-time dashboard that flagged anomalous transactions before settlement so support agents could intervene before money left the account. Fraud losses at SuperPe dropped by roughly half.",
     tags: ["React", "Node.js", "PostgreSQL", "Real-time"],
     featured: false,
   },
@@ -62,7 +80,7 @@ export const PROJECTS: Project[] = [
     id: "gis-apps",
     title: "Enterprise GIS Applications",
     description:
-      "Six production React apps for government and enterprise GIS teams, built on the ArcGIS SDK with real-time map layers, spatial queries, and bespoke visualization dashboards.",
+      "Six production React apps for government and enterprise GIS teams, built on the ArcGIS SDK with the Calcite design system: real-time map layers, spatial queries, and bespoke visualization dashboards.",
     tags: ["React", "ArcGIS SDK", "Node.js", "SQL", "GIS"],
     featured: false,
   },
