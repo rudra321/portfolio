@@ -215,8 +215,9 @@ function buildRequest(provider, env, system, convo, opts) {
   if (provider === "gemini") {
     // gemini-flash-latest is a thinking model — chain-of-thought would burn the
     // max_tokens budget and add latency for what are short portfolio answers.
-    // Default thinking OFF; override with GEMINI_REASONING ("low"/"medium"/"high").
-    const reasoning = env.GEMINI_REASONING || "none";
+    // The current Flash rejects "none" (400) — "low" is the minimum accepted;
+    // override with GEMINI_REASONING ("medium"/"high").
+    const reasoning = env.GEMINI_REASONING || "low";
     if (reasoning) base.reasoning_effort = reasoning;
   }
   if (provider === "groq") {

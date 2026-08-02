@@ -16,7 +16,9 @@ compatibility_date = "2026-01-01"
 # [vars]
 # ANTHROPIC_MODEL  = "claude-haiku-4-5"
 # GEMINI_MODEL     = "gemini-flash-latest"   # alias → current free Flash
-# GEMINI_REASONING = "none"                  # none|low|medium|high (thinking budget)
+# GEMINI_REASONING = "low"                   # low|medium|high ("none" → 400 on current Flash)
 # GROQ_MODEL       = "llama-3.3-70b-versatile"
 # PROVIDER_ORDER   = "anthropic,gemini,groq"
-# ALLOWED_ORIGINS  = "https://rudra321.github.io,http://localhost:3000"
+
+[vars]
+ALLOWED_ORIGINS = "https://rudra321.github.io,http://localhost:3000,http://localhost:3001"
