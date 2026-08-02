@@ -31,13 +31,16 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          echo "chat endpoint configured: ${NEXT_PUBLIC_CHAT_ENDPOINT:-NO — building local-engine-only}"
+          npm run build
         env:
           # Optional — set the CHAT_ENDPOINT repo secret (the Worker URL) to take
           # the live LLM tiers live. Unset = the chat runs on the in-browser local
           # engine (still fully usable). Provider API keys live in the Worker, never
           # here — this is only ever a URL, never a key in the bundle.
-          NEXT_PUBLIC_CHAT_ENDPOINT: ${{ secrets.CHAT_ENDPOINT }}
+          # Accepts either name, as a repo secret or a repo variable.
+          NEXT_PUBLIC_CHAT_ENDPOINT: ${{ secrets.CHAT_ENDPOINT || secrets.NEXT_PUBLIC_CHAT_ENDPOINT || vars.CHAT_ENDPOINT || vars.NEXT_PUBLIC_CHAT_ENDPOINT }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
