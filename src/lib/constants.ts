@@ -1,3 +1,5 @@
+import { METRICS } from "@/data/stats";
+
 export const NAV_LINKS = [
   { label: "Ask", href: "#hero" },
   { label: "Work", href: "#experience" },
@@ -7,8 +9,7 @@ export const NAV_LINKS = [
 
 export const SITE_METADATA = {
   title: "Rudra Pratap Singh Chouhan | Lead Engineer",
-  description:
-    "Lead Engineer at Raaz. Healthcare software for 55,000+ patients. Previously GJ-Map, SuperPe. BITS Pilani CS '23.",
+  description: `Lead Engineer at Raaz. Healthcare software for ${METRICS.patients}+ patients and counting. Previously GJ-Map, SuperPe. BITS Pilani CS '23.`,
   url: "https://rudra321.github.io/portfolio",
   // Origin only — basePath (/portfolio) is appended automatically by Next for
   // file-based metadata such as the generated opengraph-image.

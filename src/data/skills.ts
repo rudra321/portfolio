@@ -14,7 +14,7 @@ export const SKILLS: SkillCategory[] = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express", "PostgreSQL", "DynamoDB", "MongoDB", "Redis", "Django", "Firebase"],
+    items: ["Node.js", "Express", "PostgreSQL", "DynamoDB", "MongoDB", "Redis", "Firebase"],
   },
   {
     category: "Cloud & DevOps",

@@ -3,6 +3,8 @@
 // gaps, deferral on comp, identity, voice/slop. Expectations are deliberately
 // loose where the model has freedom and strict where correctness is binary.
 
+import { METRICS } from "@/data/stats";
+
 import type { EvalCase } from "../types";
 
 export const SINGLE_CASES: EvalCase[] = [
@@ -15,7 +17,7 @@ export const SINGLE_CASES: EvalCase[] = [
       // Subjective superlative → accept ANY grounded flagship + a real metric.
       includeOneOf: [
         "Raaz", "GIS", "WebAssembly", "WASM", "clinical", "fraud", "SuperPe",
-        "GJ-Map", "40%", "55,000", "70%", "200,000",
+        "GJ-Map", "40%", METRICS.patients, "10-15", "200,000",
       ],
       maxSentences: 5,
     },
@@ -28,7 +30,7 @@ export const SINGLE_CASES: EvalCase[] = [
       tag: "project",
       projectId: "raaz-platform",
       mustInclude: ["Raaz"],
-      includeOneOf: ["React Native", "Lambda", "Supabase", "55,000"],
+      includeOneOf: ["React Native", "Lambda", "Supabase", METRICS.patients],
       maxSentences: 5,
     },
   },
@@ -76,10 +78,10 @@ export const SINGLE_CASES: EvalCase[] = [
   },
   {
     id: "ai-work",
-    description: "AI work → grounded, mentions Claude / Groq / 70%",
+    description: "AI work → grounded, mentions Claude / Groq / 10-15",
     prompt: "Tell me about your AI work.",
     expect: {
-      includeOneOf: ["Claude", "Groq", "70%"],
+      includeOneOf: ["Claude", "Groq", "10-15"],
       maxSentences: 5,
     },
   },
@@ -108,7 +110,7 @@ export const SINGLE_CASES: EvalCase[] = [
     prompt: "Why should I hire you?",
     expect: {
       maxSentences: 5,
-      mustInclude: ["55,000"],
+      mustInclude: [METRICS.patients],
     },
   },
   {
@@ -116,7 +118,7 @@ export const SINGLE_CASES: EvalCase[] = [
     description: "Why healthcare → grounded motivation, no fabrication",
     prompt: "Why healthcare?",
     expect: {
-      includeOneOf: ["Raaz", "55,000", "patients", "order pipeline", "care"],
+      includeOneOf: ["Raaz", METRICS.patients, "patients", "order pipeline", "care"],
       maxSentences: 4,
     },
   },

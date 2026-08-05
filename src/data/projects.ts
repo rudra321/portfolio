@@ -1,3 +1,5 @@
+import { METRICS } from "./stats";
+
 export interface Project {
   id: string;
   title: string;
@@ -12,16 +14,15 @@ export const PROJECTS: Project[] = [
   {
     id: "raaz-platform",
     title: "Raaz Healthcare Platform",
-    description:
-      "The healthcare platform I built and operate end to end for 55,000+ patients: a React Native app, an Express/TypeScript backend (204 endpoints), and Supabase. One order pipeline routes 120+ daily orders from app, web, and WhatsApp through a shared, forward-only payment state machine across Razorpay, Shopify, Prozo, and Proship, with every webhook handled idempotently against a central log so provider redeliveries can't corrupt state.",
-    tags: ["React Native", "TypeScript", "AWS Lambda", "Supabase", "PostgreSQL", "Razorpay"],
+    description: `The healthcare platform I built and operate end to end, now past ${METRICS.patients} patients: a React Native app, an Express/TypeScript backend (${METRICS.endpoints}+ endpoints), and Supabase. One order pipeline routes ${METRICS.ordersPerDay}+ daily orders from app, web, and WhatsApp through a shared, forward-only payment state machine across Razorpay, Shopify, Prozo, and Proship — Redis-backed queues buffer the bursts, and every webhook is handled idempotently against a central log so provider redeliveries can't corrupt state.`,
+    tags: ["React Native", "TypeScript", "AWS Lambda", "Supabase", "Redis", "Razorpay"],
     featured: true,
   },
   {
     id: "ai-clinical-engine",
     title: "Clinical Assessment Engine",
     description:
-      "A deterministic 100-point clinical scoring engine — 9 weighted factors (IIEF-5, IELT, etiology, comorbidities) — that computes prognosis and a treatment cart, then hands the doctor a pre-filled record, cutting prep from 30 minutes to 10-15. All the math is in code; Claude and Groq only format the report and the Hinglish diet plan, after an early version let the LLM add up the scores and miscounted.",
+      "A deterministic 100-point clinical scoring engine that computes prognosis and a treatment cart from 9 weighted factors (IIEF-5, IELT, etiology, comorbidities), then hands the doctor a pre-filled record — prep drops from 30 minutes to 10-15. All the math is in code; Claude and Groq only format the report and the Hinglish diet plan, after an early version let the LLM add up the scores and it miscounted.",
     tags: ["Claude API", "Groq", "Node.js", "TypeScript", "PDF Generation"],
     featured: true,
   },
@@ -29,7 +30,7 @@ export const PROJECTS: Project[] = [
     id: "scout",
     title: "Scout — Open-Source Job-Search Agent",
     description:
-      "An open-source (MIT) job-search agent I built during my own job hunt and open-sourced: ~6,300 lines of TypeScript, no framework, a hand-rolled CLI and HTTP server. It pulls real openings straight from ATS APIs (Greenhouse, Lever, Ashby), HN 'Who is hiring', and RSS feeds — not job boards — scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails with MX-validated address guessing. Thesis: zero ghost jobs.",
+      "A job-search agent (MIT) I built during my own job hunt and open-sourced: ~6,300 lines of TypeScript, no framework, a hand-rolled CLI and HTTP server. It pulls real openings straight from ATS APIs (Greenhouse, Lever, Ashby), HN 'Who is hiring', and RSS feeds — not job boards — scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails with MX-validated address guessing. Thesis: zero ghost jobs.",
     tags: ["TypeScript", "Anthropic SDK", "CLI", "ATS APIs"],
     githubUrl: "https://github.com/rudra321/find-me-a-job",
     featured: true,
@@ -63,8 +64,7 @@ export const PROJECTS: Project[] = [
   {
     id: "call-center",
     title: "Real-Time Voice-AI Call System",
-    description:
-      "Voice-AI outreach on Vapi and Smallest AI handling 200,000+ calls a month across an auto-dialer, human agents, and AI bots. Event-triggered from app activity, with a P1-P6 time-priority ladder, transcript summaries forced into a machine-parseable token for deterministic extraction, and automatic CRM follow-up state plus live agent handoff over WebSocket/SSE, bridged into Zoho CRM.",
+    description: `Voice-AI outreach on Vapi and Smallest AI handling ${METRICS.callsPerMonth}+ calls a month across an auto-dialer, human agents, and AI bots. Event-triggered from app activity, with a P1-P6 time-priority ladder, transcript summaries forced into a machine-parseable token for deterministic extraction, and automatic CRM follow-up state plus live agent handoff over WebSocket/SSE, bridged into Zoho CRM.`,
     tags: ["Vapi", "Smallest AI", "Socket.io", "DynamoDB", "Zoho CRM"],
     featured: false,
   },

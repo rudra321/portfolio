@@ -4,6 +4,7 @@
 // the full generative-UI + follow-up flow. Reused by the mock provider.
 
 import { PERSONAL } from "@/data/personal";
+import { METRICS } from "@/data/stats";
 
 export interface Canned {
   q: string;
@@ -19,13 +20,13 @@ export const STARTERS: Canned[] = [
   },
   {
     q: "Walk me through Raaz.",
-    a: `I built the healthcare platform end to end: a React Native app, an Express/TypeScript API on Lambda, and a Supabase database, now serving 55,000+ patients. Payments, Shopify, and two warehouse partners all run through one idempotent order pipeline so retries can't corrupt state.
+    a: `I built the healthcare platform end to end: a React Native app, an Express/TypeScript API on Lambda, and a Supabase database, now past ${METRICS.patients} patients. Payments, Shopify orders, a warehouse, and a last-mile carrier all run through one idempotent order pipeline with Redis-backed queues, so retries can't corrupt state.
 [[ui:experience]]
 [[next: How did you handle payments at scale? | Tell me about the call-center system | Are you open to work?]]`,
   },
   {
     q: "What are you best at?",
-    a: `Owning a product end to end. TypeScript and Python across React/React Native on the front and Node on AWS Lambda on the back, and I'll drop into WebAssembly or wire up an LLM when a problem needs it.
+    a: `Taking a system end to end and keeping it standing. Raaz runs payments, orders, and warehouse handoff for ${METRICS.patients}+ patients through one pipeline with idempotent webhooks and a forward-only payment state machine, so a retry can't double-charge. Day to day that's TypeScript and Python: React Native on the front, Node on Lambda on the back, with WebAssembly when a problem needs it.
 [[ui:skills]]
 [[next: Do you know Rust? | What's your proudest build? | Why healthcare?]]`,
   },

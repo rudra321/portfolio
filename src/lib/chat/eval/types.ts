@@ -38,7 +38,7 @@ export interface Expectation {
   projectId?: string;
   /**
    * "one of" inclusion: at least ONE of these substrings must appear. Useful for
-   * cases like "mention Claude OR Groq OR 70%".
+   * cases like "mention Claude OR Groq OR 10-15".
    */
   includeOneOf?: string[];
 }

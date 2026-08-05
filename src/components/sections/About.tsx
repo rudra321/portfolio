@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PERSONAL } from "@/data/personal";
+import { METRICS } from "@/data/stats";
 import { fadeInUp } from "@/lib/animations";
 
 export function About() {
@@ -36,8 +37,8 @@ export function About() {
             viewport={{ once: true }}
           >
             <p className="text-2xl font-medium leading-snug tracking-tight text-foreground md:text-3xl lg:text-[2.4rem] lg:leading-[1.15]">
-              I lead the stack behind a healthcare platform used by
-              <span className="font-serif italic text-accent"> 55,000+ patients</span>:
+              I lead the stack behind a healthcare platform now past
+              <span className="font-serif italic text-accent"> {METRICS.patients} patients</span>:
               a React Native app, an Express backend on Lambda,
               a Supabase database, and the boring glue that keeps
               all three in agreement.
@@ -53,7 +54,7 @@ export function About() {
             </p>
 
             <p className="mt-6 max-w-xl text-[20px] leading-[1.6] text-text-secondary">
-              Outside work I play Ultimate Frisbee. We won gold at the
+              Outside work I play Ultimate Frisbee. My team won gold at the
               <span className="font-serif italic"> National Open Championship</span> in
               2025 and the National College Championship in 2023, a useful
               reminder that latency matters off-screen too.
