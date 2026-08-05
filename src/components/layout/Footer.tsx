@@ -1,45 +1,32 @@
-import { PERSONAL } from "@/data/personal";
-
 export function Footer() {
   // Server Component: the year is computed once at build time — no hydration
   // mismatch across a year boundary.
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-card-border px-6 pb-8 pt-12">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col gap-4 border-b border-card-border pb-6 md:flex-row md:items-center md:justify-between">
+    <footer className="border-t border-hairline px-6 py-10">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center lg:grid lg:grid-cols-3 lg:items-center lg:gap-0 lg:text-left">
+        <div className="flex flex-col items-center gap-1 lg:items-start">
+          <span className="font-mono text-[13px] font-medium text-foreground">
+            rudra<span className="text-accent">_</span>
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-secondary">
+            &copy; {year}
+          </span>
+        </div>
+
+        {/* Caret 3 of 3: static. */}
+        <p className="font-mono text-[11px] text-text-secondary lg:text-center">
+          — end of transcript —
+        </p>
+
+        <div className="lg:text-right">
           <a
             href="#hero"
-            className="font-serif text-lg italic text-foreground transition-colors hover:text-accent"
+            className="font-mono text-xs text-text-secondary transition-colors hover:text-accent"
           >
             Ask me something ↑
           </a>
-          <div className="flex flex-wrap gap-x-5 gap-y-1 font-mono text-xs text-text-secondary">
-            <a href={`mailto:${PERSONAL.email}`} className="transition-colors hover:text-accent">
-              Email
-            </a>
-            <a
-              href={PERSONAL.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-accent"
-            >
-              GitHub
-            </a>
-            <a
-              href={PERSONAL.socials.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-accent"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </div>
-        <div className="mt-6 flex items-end justify-between">
-          <p className="font-mono text-xs text-text-secondary/50">&copy; {year}</p>
-          <p className="font-mono text-xs text-text-secondary/50">{PERSONAL.name}</p>
         </div>
       </div>
     </footer>

@@ -2,14 +2,18 @@
 
 import { useState } from "react";
 import { motion, useScroll, useSpring, useMotionValueEvent } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function ScrollProgress() {
   const { scrollY, scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
+  const reducedMotion = useReducedMotion();
+  const springProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
+  // Reduced motion: track scroll exactly, with no independent settling motion.
+  const scaleX = reducedMotion ? scrollYProgress : springProgress;
 
   // Hidden during the chat hero — a near-0% bar there reads as "you've barely
   // started." Reveal once the reader scrolls past the fold into the sections.
@@ -21,7 +25,8 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 z-[100] h-[1.5px] origin-left bg-accent/70"
+      aria-hidden="true"
+      className="fixed top-0 left-0 right-0 z-[100] h-px origin-left bg-accent"
       style={{ scaleX }}
       initial={{ opacity: 0 }}
       animate={{ opacity: show ? 1 : 0 }}

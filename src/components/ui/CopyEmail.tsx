@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Copy, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CopyEmailProps {
@@ -41,35 +39,19 @@ export function CopyEmail({ email, className }: CopyEmailProps) {
       onClick={handleCopy}
       aria-label={`Copy email ${email} to clipboard`}
       className={cn(
-        "group flex items-center gap-3 rounded-xl border border-card-border bg-card-bg px-5 py-3 font-mono text-sm text-text-secondary transition-all hover:border-accent/40 hover:text-foreground",
+        "group flex flex-wrap items-baseline gap-x-4 gap-y-1 text-left",
         className
       )}
     >
-      <span>{email}</span>
+      <span className="font-mono text-[clamp(1.25rem,3.5vw,1.875rem)] text-foreground transition-colors group-hover:text-accent">
+        {email}
+      </span>
+      <span aria-hidden className="font-mono text-[11px] text-accent">
+        {copied ? "[copied ✓]" : "[copy]"}
+      </span>
       <span aria-live="polite" className="sr-only">
         {copied ? "Copied to clipboard" : ""}
       </span>
-      <AnimatePresence mode="wait">
-        {copied ? (
-          <motion.span
-            key="check"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-          >
-            <Check size={16} className="text-accent" />
-          </motion.span>
-        ) : (
-          <motion.span
-            key="copy"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-          >
-            <Copy size={16} className="opacity-50 transition-opacity group-hover:opacity-100" />
-          </motion.span>
-        )}
-      </AnimatePresence>
     </button>
   );
 }

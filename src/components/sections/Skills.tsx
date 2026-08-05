@@ -1,48 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionShell } from "@/components/layout/SectionShell";
 import { SKILLS } from "@/data/skills";
-import { fadeInUp } from "@/lib/animations";
+import { ledger, typeset } from "@/lib/animations";
 
 export function Skills() {
   return (
-    <section id="skills" className="relative overflow-hidden px-6 py-32 md:py-40">
-      <span
-        aria-hidden
-        className="ghost-numeral pointer-events-none absolute -top-2 left-2 select-none text-[clamp(180px,28vw,360px)] md:left-10 md:top-6"
-      >
-        04
-      </span>
-
-      <div className="relative z-10 mx-auto max-w-6xl">
-        <motion.h2
-          className="mb-14 font-serif text-3xl italic text-foreground md:text-4xl"
-          variants={fadeInUp}
+    <SectionShell
+      id="skills"
+      index="04"
+      slug="skills"
+      question="What do you work with?"
+      wide={
+        <motion.div
+          variants={ledger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
         >
-          What I reach for.
-        </motion.h2>
-
-        <div className="space-y-12">
           {SKILLS.map((category) => (
             <motion.div
               key={category.category}
-              className="grid items-baseline gap-6 border-b border-card-border/60 pb-10 last:border-b-0 md:grid-cols-[200px_1fr] md:gap-10"
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+              variants={typeset}
+              className="grid gap-y-3 border-t border-hairline py-5 last:border-b lg:grid-cols-[220px_1fr] lg:gap-x-10"
             >
-              <p className="font-serif text-xl italic text-text-secondary">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary">
                 {category.category}
               </p>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-1.5">
                 {category.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-md border border-card-border bg-card-bg px-3 py-1.5 font-mono text-xs text-text-secondary transition-colors hover:border-accent/30 hover:text-foreground"
+                    className="rounded-md border border-card-border bg-transparent px-2.5 py-1 font-mono text-xs text-text-secondary transition-colors hover:border-accent/40 hover:text-foreground"
                   >
                     {item}
                   </span>
@@ -50,8 +40,10 @@ export function Skills() {
               </div>
             </motion.div>
           ))}
-        </div>
-      </div>
-    </section>
+        </motion.div>
+      }
+    >
+      {null}
+    </SectionShell>
   );
 }

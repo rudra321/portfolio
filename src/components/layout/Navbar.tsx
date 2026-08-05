@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { useLenis } from "@/components/providers/LenisProvider";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { EASE } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -12,7 +14,9 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeHref, setActiveHref] = useState<string>("");
   const lenis = useLenis();
+  const reducedMotion = useReducedMotion();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -40,13 +44,43 @@ export function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  // Close the mobile menu on Escape and restore focus to the toggle.
+  // Close the mobile menu on Escape (restoring focus to the toggle) and trap
+  // Tab inside the overlay while it is open.
   useEffect(() => {
     if (!mobileOpen) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setMobileOpen(false);
         menuButtonRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      // Cycle order: overlay links, then the toggle (which is the close button).
+      const focusables = [
+        ...Array.from(
+          overlayRef.current?.querySelectorAll<HTMLElement>("a[href]") ?? []
+        ),
+        menuButtonRef.current,
+      ].filter((el): el is HTMLElement => el !== null);
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
+      const inTrap = active !== null && focusables.includes(active);
+
+      if (e.shiftKey) {
+        if (!inTrap || active === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else if (!inTrap || active === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
     document.addEventListener("keydown", onKey);
@@ -54,18 +88,24 @@ export function Navbar() {
   }, [mobileOpen]);
 
   const scrollTo = (target: string | number) => {
+    // Reduced motion: jump instead of animating the fallback scroll.
+    const behavior: ScrollBehavior = reducedMotion ? "auto" : "smooth";
     if (lenis) {
       lenis.scrollTo(target);
     } else if (typeof target === "number") {
-      window.scrollTo({ top: target, behavior: "smooth" });
+      window.scrollTo({ top: target, behavior });
     } else {
-      document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+      document.querySelector(target)?.scrollIntoView({ behavior });
     }
   };
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
-    setMobileOpen(false);
+    if (mobileOpen) {
+      // Same restore path as Escape — the overlay's links are unmounting.
+      setMobileOpen(false);
+      menuButtonRef.current?.focus();
+    }
     scrollTo(href);
   };
 
@@ -75,12 +115,12 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled
-            ? "border-b border-card-border bg-background/75 backdrop-blur-xl"
+            ? "border-b border-hairline bg-background/95"
             : "bg-transparent"
         )}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, ease: EASE }}
       >
         <nav
           aria-label="Primary"
@@ -92,10 +132,26 @@ export function Navbar() {
               e.preventDefault();
               scrollTo(0);
             }}
-            className="font-serif text-xl italic tracking-tight text-foreground"
+            className="font-mono text-sm font-medium lowercase tracking-[0.02em] text-foreground"
           >
             rudra
-            <span className="text-accent">.</span>
+            {/* Caret 1 of 3: blinks only while the page is unscrolled. */}
+            {scrolled || reducedMotion ? (
+              <span className="text-accent">_</span>
+            ) : (
+              <motion.span
+                className="text-accent"
+                animate={{ opacity: [1, 1, 0, 0] }}
+                transition={{
+                  duration: 0.8,
+                  times: [0, 0.49, 0.5, 1],
+                  ease: "linear",
+                  repeat: Infinity,
+                }}
+              >
+                _
+              </motion.span>
+            )}
           </a>
 
           {/* Desktop nav */}
@@ -107,10 +163,10 @@ export function Navbar() {
                   onClick={(e) => handleNavClick(e, link.href)}
                   aria-current={activeHref === link.href ? "true" : undefined}
                   className={cn(
-                    "font-mono text-xs tracking-wide transition-colors hover:text-accent",
+                    "font-mono text-[11px] lowercase tracking-[0.08em] transition-colors hover:text-foreground",
                     activeHref === link.href
                       ? "text-accent"
-                      : "text-text-secondary/70"
+                      : "text-text-secondary"
                   )}
                 >
                   {link.label.toLowerCase()}
@@ -142,8 +198,12 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            ref={overlayRef}
             id="mobile-menu"
-            className="fixed inset-0 z-40 flex flex-col items-start justify-center gap-6 bg-background/98 px-12 backdrop-blur-xl md:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
+            className="fixed inset-0 z-40 flex flex-col items-start justify-center gap-6 bg-background px-12 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -155,13 +215,13 @@ export function Navbar() {
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 aria-current={activeHref === link.href ? "true" : undefined}
-                className="font-serif text-4xl italic text-text-secondary transition-colors hover:text-accent"
+                className="font-sans text-[2.5rem] font-semibold lowercase leading-none tracking-[-0.03em] text-text-secondary transition-colors hover:text-foreground"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ delay: i * 0.05 }}
               >
-                {link.label.toLowerCase()}.
+                {link.label.toLowerCase()}
               </motion.a>
             ))}
           </motion.div>

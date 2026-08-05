@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { cn } from "@/lib/utils";
 
 interface GradientBlobProps {
@@ -11,50 +7,28 @@ interface GradientBlobProps {
   animate?: boolean;
 }
 
-const colorMap = {
-  amber: "bg-[#E8A87C]/15",
-  purple: "bg-[#7C3AED]/12",
-  ember: "bg-[#B85C38]/14",
-};
-
-export function GradientBlob({
-  color = "amber",
-  size = "500px",
-  className,
-  animate = true,
-}: GradientBlobProps) {
-  const reducedMotion = useReducedMotion();
-
-  if (!animate || reducedMotion) {
-    return (
-      <div
-        className={cn(
-          "pointer-events-none absolute rounded-full blur-[120px]",
-          colorMap[color],
-          className
-        )}
-        style={{ width: size, height: size }}
-      />
-    );
-  }
+/**
+ * THE LAMP — the single permitted gradient on the site, and only in the hero.
+ * A static radial wash, no blur filter, no motion. The name and prop signature
+ * are preserved because the untouchable chat mounts this component; `purple`
+ * and `amber` washes are gone from the design, so those render nothing.
+ *
+ * `className` is still passed through, but the lamp's geometry and opacity are
+ * pinned inline: the chat's call sites carry legacy blob positioning
+ * (`-top-60 right-[-10%] opacity-40`) that would displace and erase the wash.
+ */
+export function GradientBlob({ color = "amber", className }: GradientBlobProps) {
+  if (color !== "ember") return null;
 
   return (
-    <motion.div
-      className={cn(
-        "pointer-events-none absolute rounded-full blur-[120px]",
-        colorMap[color],
-        className
-      )}
-      style={{ width: size, height: size }}
-      animate={{
-        x: [0, 30, -20, 0],
-        y: [0, -25, 15, 0],
-        scale: [1, 1.05, 0.95, 1],
-      }}
-      transition={{
-        duration: 20,
-        repeat: Infinity,
-        ease: "easeInOut",
+    <div
+      aria-hidden
+      className={cn("pointer-events-none absolute inset-0", className)}
+      style={{
+        inset: 0,
+        opacity: 1,
+        background:
+          "radial-gradient(58rem 30rem at 50% -6%, var(--signal-glow), transparent 68%)",
       }}
     />
   );

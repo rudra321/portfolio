@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Instrument_Serif, Space_Grotesk } from "next/font/google";
+import { Archivo, IBM_Plex_Mono, Newsreader } from "next/font/google";
 import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/LenisProvider";
@@ -8,21 +8,26 @@ import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { SITE_METADATA } from "@/lib/constants";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const archivo = Archivo({
+  variable: "--font-archivo",
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  weight: "400",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  weight: ["400", "500"],
+  subsets: ["latin"],
+});
+
+// Variable weight is required to request the optical-size axis (next/font only
+// accepts `axes` when weight is `variable`). opsz keeps small italics from
+// going spindly at the 11-15px sizes the chat and rails use.
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  weight: "variable",
   style: ["normal", "italic"],
-  subsets: ["latin"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  weight: ["400", "500", "600", "700"],
+  axes: ["opsz"],
   subsets: ["latin"],
 });
 
@@ -58,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistMono.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${archivo.variable} ${plexMono.variable} ${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <a
@@ -67,11 +72,19 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        {/* framer's whileInView serializes opacity:0 into the static export, so
+            no-JS visitors would see nothing below the chat. An author-stylesheet
+            !important beats those inline styles and restores full visibility. */}
+        <noscript>
+          <style>{`#main [style]{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}`}</style>
+        </noscript>
         <MotionConfig reducedMotion="user">
           <LenisProvider>
             <ScrollProgress />
             <Navbar />
-            <main id="main">{children}</main>
+            <main id="main" tabIndex={-1} className="outline-none">
+              {children}
+            </main>
             <Footer />
           </LenisProvider>
         </MotionConfig>
