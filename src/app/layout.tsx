@@ -33,7 +33,7 @@ const newsreader = Newsreader({
 
 // Absolute, basePath-aware URL to the committed static OG image. (Next does not
 // prepend basePath to metadata image URLs, so it is spelled out here.)
-const ogImage = `${SITE_METADATA.url}/og.png`;
+const ogImage = `${SITE_METADATA.url}/og-v2.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_METADATA.origin),
