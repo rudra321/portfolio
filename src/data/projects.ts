@@ -38,7 +38,7 @@ export const PROJECTS: Project[] = [
     id: "scout",
     title: "Scout — Open-Source Job-Search Agent",
     description:
-      "A job-search agent (MIT) I built during my own job hunt and open-sourced: ~6,300 lines of TypeScript, no framework, a hand-rolled CLI and HTTP server. It pulls real openings straight from ATS APIs (Greenhouse, Lever, Ashby), HN 'Who is hiring', and RSS feeds, not job boards. It scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails with MX-validated address guessing. Thesis: zero ghost jobs.",
+      "A job-search agent (MIT) I built during my own job hunt and open-sourced: plain TypeScript, no framework, a hand-rolled CLI and HTTP server. It pulls real openings straight from ATS APIs (Greenhouse, Lever, Ashby), HN 'Who is hiring', and RSS feeds, not job boards. It scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails with MX-validated address guessing. Thesis: zero ghost jobs.",
     tags: ["TypeScript", "Anthropic SDK", "CLI", "ATS APIs"],
     githubUrl: "https://github.com/rudra321/find-me-a-job",
     featured: true,
@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
     id: "mood-musica",
     title: "MoodMusica — Map-First Music Discovery",
     description:
-      "Tap anywhere on a world map, type a mood, and get an AI-curated color palette and eight real, region-appropriate songs with playable previews (Lagos + 'energetic night out' → Afrobeats). ~3,900 lines of Next.js with a hexagonal architecture (six swappable ports) and an anti-hallucination pipeline: every AI-suggested track is grounded in real Apple charts and verified against the iTunes API before it's shown. Free services only, no Spotify.",
+      "Tap anywhere on a world map, type a mood, and get an AI-curated color palette and eight real, region-appropriate songs with playable previews (Lagos + 'energetic night out' → Afrobeats). Next.js with a hexagonal architecture (six swappable ports) and an anti-hallucination pipeline: every AI-suggested track is grounded in real Apple charts and verified against the iTunes API before it's shown. Free services only, no Spotify.",
     tags: ["Next.js", "React", "Leaflet", "LLM", "iTunes API"],
     githubUrl: "https://github.com/rudra321/mood-musica",
     liveUrl: "https://mood-musica.onrender.com/",
@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
     id: "whatsapp-calendar",
     title: "WhatsApp Calendar — Chat-to-Calendar Assistant",
     description:
-      "A WhatsApp bot (~2,350 lines, Bun + Hono) that turns \"meeting with Shivay tomorrow at 2pm\" into a Google Calendar event with a Meet link and conflict detection. Groq parses intent into Zod-validated payloads; a hexagonal architecture with six port interfaces makes swapping providers a one-file change; and it does self-service Google OAuth over a sign-in link the bot sends you.",
+      "A WhatsApp bot (Bun + Hono) that turns \"meeting with Shivay tomorrow at 2pm\" into a Google Calendar event with a Meet link and conflict detection. Groq parses intent into Zod-validated payloads; a hexagonal architecture with six port interfaces makes swapping providers a one-file change; and it does self-service Google OAuth over a sign-in link the bot sends you.",
     tags: ["TypeScript", "Bun", "Hono", "Groq", "Google Calendar API", "Fly.io"],
     githubUrl: "https://github.com/rudra321/whatsapp-calendar",
     featured: false,
