@@ -105,8 +105,8 @@ export function ChatExperience() {
                 Ask me anything.
               </p>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed text-text-secondary">
-                This portfolio is a conversation. I&apos;m an AI answering as Rudra —
-                ask about my work, projects, and background. Type a question, or tap
+                This portfolio is a conversation. I&apos;m an AI answering as Rudra.
+                Ask about my work, projects, and background. Type a question, or tap
                 one below.
               </p>
             </motion.div>
