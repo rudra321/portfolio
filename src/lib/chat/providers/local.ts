@@ -108,7 +108,7 @@ const projectsOverview = `I've shipped healthcare infra, applied AI, browser-sid
 [[ui:projects]]
 [[next: Walk me through Raaz | What's the hardest thing you've built? | What are you best at?]]`;
 
-const greeting = `Hey, good to meet you. I'm Rudra, a lead engineer in Bangalore. Ask me anything about what I've built, or tap a suggestion.
+const greeting = `Hey, good to meet you. I'm Rudra, a software engineer in Bangalore. Ask me anything about what I've built, or tap a suggestion.
 [[next: What have you built? | What are you best at? | Are you open to work?]]`;
 
 const identity = `I'm an AI speaking as Rudra, so you get my story without waiting on my inbox. For the real me, email ${PERSONAL.email}.
@@ -126,7 +126,7 @@ const deferToEmail = `I keep specifics like compensation and exact availability 
 const resume = `Happy to share it.
 [[ui:resume]]`;
 
-const about = `I'm a lead engineer in Bangalore. I studied CS at BITS Pilani, Goa, and now build healthcare software at Raaz, after browser-side ML at GJ-Map and a fraud engine at SuperPe.
+const about = `I'm a software engineer in Bangalore. I studied CS at BITS Pilani, Goa, and now build healthcare software at Raaz, after browser-side ML at GJ-Map and a fraud engine at SuperPe.
 [[ui:experience]]
 [[next: What's your proudest build? | What's your stack? | Are you open to work?]]`;
 
@@ -142,7 +142,7 @@ const whyHealthcare = `Healthcare is where the systems I like building actually 
 const weakness = `Design polish isn't my strong suit. I lean on systems and can wire up a clean UI, but I'm not going to out-design a specialist, and I haven't shipped Rust or Go in production. I'd rather say that straight than oversell.
 [[next: What are you best at? | What's your stack? | What's your proudest build?]]`;
 
-const experience = `I've been shipping professionally since 2022: a fraud engine at SuperPe, then browser-side ML at GJ-Map, and now lead engineering at Raaz, where I run the platform today. My CS degree is from BITS Pilani.
+const experience = `I've been shipping professionally since 2022: a fraud engine at SuperPe, then browser-side ML at GJ-Map, and now Raaz, where I run the platform. My CS degree is from BITS Pilani.
 [[ui:experience]]
 [[next: What did you do at SuperPe? | What's your proudest build? | Are you open to work?]]`;
 

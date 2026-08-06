@@ -8,8 +8,8 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SITE_METADATA = {
-  title: "Rudra Pratap Singh Chouhan | Lead Engineer",
-  description: `Lead Engineer at Raaz. Healthcare software for ${METRICS.patients}+ patients and counting. Previously GJ-Map, SuperPe. BITS Pilani CS '23.`,
+  title: "Rudra Pratap Singh Chouhan | Software Engineer",
+  description: `Software Engineer at Raaz. Healthcare software for ${METRICS.patients}+ patients and counting. Previously GJ-Map, SuperPe. BITS Pilani CS '23.`,
   url: "https://rudra321.github.io/portfolio",
   // Origin only — basePath (/portfolio) is appended automatically by Next for
   // file-based metadata such as the generated opengraph-image.
