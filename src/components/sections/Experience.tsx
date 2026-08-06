@@ -11,7 +11,7 @@ export function Experience() {
       id="experience"
       index="02"
       slug="experience"
-      question="Where have you worked?"
+      question="Where have I worked?"
     >
       {/* Run-log entries — no rail, no dots, no magic numbers. */}
       <motion.div

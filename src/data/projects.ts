@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "whatsapp-calendar",
-    title: "WhatsApp Calendar Assistant",
+    title: "WhatsApp Calendar — Chat-to-Calendar Assistant",
     description:
       "A WhatsApp bot (~2,350 lines, Bun + Hono) that turns \"meeting with Shivay tomorrow at 2pm\" into a Google Calendar event with a Meet link and conflict detection. Groq parses intent into Zod-validated payloads; a hexagonal architecture with six port interfaces makes swapping providers a one-file change; and it does self-service Google OAuth over a sign-in link the bot sends you.",
     tags: ["TypeScript", "Bun", "Hono", "Groq", "Google Calendar API", "Fly.io"],

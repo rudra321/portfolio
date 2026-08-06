@@ -11,7 +11,7 @@ export function Skills() {
       id="skills"
       index="04"
       slug="skills"
-      question="What do you work with?"
+      question="What do I work with?"
       wide={
         <motion.div
           variants={ledger}

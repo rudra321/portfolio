@@ -31,7 +31,7 @@ const FACTS = [
 
 export function About() {
   return (
-    <SectionShell id="about" index="01" slug="about" question="Who are you?">
+    <SectionShell id="about" index="01" slug="about" question="Who am I?">
       <motion.div
         variants={ledger}
         initial="hidden"

@@ -18,7 +18,7 @@ export function Projects() {
       id="projects"
       index="03"
       slug="projects"
-      question="What do you build on the side?"
+      question="What do I build on the side?"
       wide={
         /* Personal projects — run-log rows aligned to the ledger rail. */
         <motion.div
@@ -38,7 +38,7 @@ export function Projects() {
               <motion.article
                 key={project.id}
                 variants={typeset}
-                className="group relative border-t border-hairline py-9 last:border-b lg:grid lg:grid-cols-[220px_1fr] lg:gap-x-10"
+                className="group relative border-t border-hairline py-9 last:border-b lg:grid lg:grid-cols-[220px_minmax(0,1fr)_230px] lg:gap-x-10"
               >
                 <span
                   aria-hidden
@@ -83,17 +83,35 @@ export function Projects() {
                       {descriptor}
                     </p>
                   )}
-                  <h3 className="mt-1.5 font-sans text-[1.75rem] font-semibold leading-tight tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent">
+                  <h3 className="mt-1.5 font-sans text-[2rem] font-semibold leading-tight tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent">
                     {name}
                   </h3>
                   <p className="mt-3 max-w-[36rem] text-[15px] leading-[1.7] text-text-secondary">
                     {project.description}
                   </p>
-                  <ul className="mt-5 flex flex-wrap gap-1.5">
+                  {/* Below lg the stack rides inline as chips; at lg+ it moves
+                      into the third ledger column as a spec list. */}
+                  <ul className="mt-5 flex flex-wrap gap-1.5 lg:hidden">
                     {project.tags.map((tag) => (
                       <li
                         key={tag}
                         className="rounded-md border border-card-border px-2.5 py-1 font-mono text-[11px] text-text-secondary"
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="hidden lg:block">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-text-secondary/80">
+                    stack
+                  </p>
+                  <ul className="mt-2.5">
+                    {project.tags.map((tag) => (
+                      <li
+                        key={tag}
+                        className="border-t border-hairline py-2 font-mono text-[11px] tracking-[0.02em] text-text-secondary last:border-b"
                       >
                         {tag}
                       </li>
