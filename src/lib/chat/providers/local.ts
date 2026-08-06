@@ -19,14 +19,14 @@ const [hardest, raaz, best, openToWork] = STARTERS.map((s) => s.a);
 
 // One grounded lead per project — frames the card without dumping its body.
 const PROJECT_LEAD: Record<string, string> = {
-  "raaz-platform": `Raaz is the healthcare platform I lead — one codebase behind the React Native app, the Express backend, and the whole order pipeline, serving ${METRICS.patients}+ patients.`,
+  "raaz-platform": `Raaz is the healthcare platform I lead: one codebase behind the React Native app, the Express backend, and the whole order pipeline, serving ${METRICS.patients}+ patients.`,
   "ai-clinical-engine": `The clinical engine scores assessments in code: eight weighted root causes on validated instruments (IIEF-5, PEDT), severity staging, and a risk lane. Claude and Groq only format the report and patient copy. It replaced a manual doctor workflow and cut consultation prep from 30 minutes to 10-15.`,
   "whatsapp-calendar": `The WhatsApp calendar bot turns a line like "meeting tomorrow at 2pm" into a Google Calendar event, with conflict detection and a Meet link. Bun and Hono, Groq for intent parsing, a hexagonal architecture so swapping providers is a one-file change.`,
   "gis-detection": `The browser GIS detection at GJ-Map. I compiled C++ inference kernels to WebAssembly and paired ONNX Runtime with Meta's Segment Anything Model, so detection ran fully client-side, 40% faster than the old pipeline.`,
-  "call-center": `The voice stack has been through three telephony generations: Knowlarity call-ops with Vapi and Smallest AI bots, a Tata SmartFlo auto-dialer with a drain-aware rescheduler, and today a Plivo WebRTC softphone right in the rep's browser — ${METRICS.callsPerMonth}+ calls a month at peak, with follow-up state landing in Zoho CRM automatically.`,
+  "call-center": `The voice stack has been through three telephony generations: Knowlarity call-ops with Vapi and Smallest AI bots, a Tata SmartFlo auto-dialer with a drain-aware rescheduler, and today a Plivo WebRTC softphone right in the rep's browser. That stack handles ${METRICS.callsPerMonth}+ calls a month at peak, with follow-up state landing in Zoho CRM automatically.`,
   "fraud-dashboard": `The fraud dashboard at SuperPe flagged anomalous transactions before settlement, so support could step in before money left the account. Fraud losses dropped by half.`,
   "gis-apps": `Six production React apps for government and enterprise GIS teams, built on the ArcGIS SDK with real-time map layers, spatial queries, and custom dashboards.`,
-  "scout": `Scout is my open-source job-search agent — I built it during my own job hunt and open-sourced it. It pulls real openings straight from ATS APIs and founder threads instead of job boards, scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails. About 6,300 lines of TypeScript, no framework.`,
+  "scout": `Scout is my open-source job-search agent. I built it during my own job hunt and open-sourced it. It pulls real openings straight from ATS APIs and founder threads instead of job boards, scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails. About 6,300 lines of TypeScript, no framework.`,
   "mood-musica": `MoodMusica is map-first music discovery: tap a spot on the world map, type a mood, and get a color palette and eight real, region-appropriate songs. The fun part is the anti-hallucination pipeline, where every AI-picked track is grounded in real Apple charts and verified against the iTunes API before it's shown, so nothing fake gets through.`,
 };
 
@@ -51,7 +51,7 @@ const PROJECT_MORE: Record<string, string> = {
 [[next: What's the hardest part of Raaz? | What's your stack? | What are you best at?]]`,
   "ai-clinical-engine": `Under the hood it's weighted scoring with branching logic and a severity model, then a generation step that turns the result into PDF reports and diet plans, replacing a workflow a doctor used to run by hand.
 [[next: What's your AI stack? | What else have you built? | Are you open to work?]]`,
-  "call-center": `The SmartFlo era is my favorite piece: a drain-aware rescheduler polls the live campaign count and refills it from the CRM inside business-hours guards, with a clock-decay priority ladder — leads decay by the hour, never get promoted, and attempt caps evict them. The current Plivo softphone came from a measured failure: reps heard silence during ringback and hung up early, so I built a four-phase dial-state machine around what the browser can actually observe.
+  "call-center": `The SmartFlo era is my favorite piece: a drain-aware rescheduler polls the live campaign count and refills it from the CRM inside business-hours guards, with a clock-decay priority ladder. Leads decay by the hour, never get promoted, and attempt caps evict them. The current Plivo softphone came from a measured failure: reps heard silence during ringback and hung up early, so I built a four-phase dial-state machine around what the browser can actually observe.
 [[next: How does Raaz work? | What's your stack? | Are you open to work?]]`,
   "fraud-dashboard": `It scored transactions in real time and flagged the anomalies before settlement, so support could freeze them before money moved. SuperPe's fraud losses dropped by half.
 [[next: What else did you do at SuperPe? | What's your stack? | Are you open to work?]]`,
@@ -130,13 +130,13 @@ const about = `I'm a lead engineer in Bangalore. I studied CS at BITS Pilani, Go
 [[ui:experience]]
 [[next: What's your proudest build? | What's your stack? | Are you open to work?]]`;
 
-const contactInfo = `Best way to reach me is email — ${PERSONAL.email}. My GitHub and LinkedIn are in the card.
+const contactInfo = `Best way to reach me is email: ${PERSONAL.email}. My GitHub and LinkedIn are in the card.
 [[ui:contact]]`;
 
 const location = `Bangalore, India. I moved here for the Raaz role after CS at BITS Pilani, Goa.
 [[next: What do you do at Raaz? | Why healthcare? | Are you open to work?]]`;
 
-const whyHealthcare = `Healthcare is where the systems I like building actually matter — a flaky payment or a lost order isn't an inconvenience, it's someone's care. At Raaz that's what pushed me to make the order pipeline idempotent and keep the platform standing for ${METRICS.patients}+ patients.
+const whyHealthcare = `Healthcare is where the systems I like building actually matter. A flaky payment or a lost order isn't an inconvenience, it's someone's care. At Raaz that's what pushed me to make the order pipeline idempotent and keep the platform standing for ${METRICS.patients}+ patients.
 [[next: Walk me through Raaz | How did you handle payments? | Are you open to work?]]`;
 
 const weakness = `Design polish isn't my strong suit. I lean on systems and can wire up a clean UI, but I'm not going to out-design a specialist, and I haven't shipped Rust or Go in production. I'd rather say that straight than oversell.
@@ -146,11 +146,11 @@ const experience = `I've been shipping professionally since 2022: a fraud engine
 [[ui:experience]]
 [[next: What did you do at SuperPe? | What's your proudest build? | Are you open to work?]]`;
 
-const learning = `Right now I'm going deeper on applied AI — LLMs, retrieval, and the infrastructure to run them cheaply and reliably. This portfolio's chat is one of those experiments. Longer term I want to keep owning products end to end in healthcare, fintech, and infra.
+const learning = `Right now I'm going deeper on applied AI: LLMs, retrieval, and the infrastructure to run them cheaply and reliably. This portfolio's chat is one of those experiments. Longer term I want to keep owning products end to end in healthcare, fintech, and infra.
 [[next: Tell me about your AI work | What's your stack? | Are you open to work?]]`;
 
 // Redis: familiar, speced as the scale-up path — not in prod; reconcilers + idempotency cover retries.
-const redisAnswer = `Familiar with it, and I speced Redis as the scale-up path for the Raaz order pipeline. I didn't need a broker in the end: provider webhook redelivery, idempotent handlers against a central webhook log, and cron reconcilers cover retries — I'd reach for Redis when queue depth actually justifies it.
+const redisAnswer = `Familiar with it, and I speced Redis as the scale-up path for the Raaz order pipeline. I didn't need a broker in the end: provider webhook redelivery, idempotent handlers against a central webhook log, and cron reconcilers cover retries. I'd reach for Redis when queue depth actually justifies it.
 [[next: How does the order pipeline work? | What's your stack? | What are you best at?]]`;
 
 const thanks = `Anytime. Ask me anything else, or reach the real me at ${PERSONAL.email}.`;

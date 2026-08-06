@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
   {
     id: "raaz-platform",
     title: "Raaz Healthcare Platform",
-    description: `The healthcare platform I built and operate end to end, now past ${METRICS.patients} patients: a React Native app, an Express/TypeScript backend, and Supabase. One pipeline routes ${METRICS.ordersPerDay}+ daily orders from app, web, and WhatsApp into a forward-only payment state machine — webhooks from Razorpay, Shopify, and the warehouse are idempotent against a central log with database unique constraints, and cron reconcilers auto-repair anything that drifts, so provider redeliveries can't corrupt state.`,
+    description: `The healthcare platform I built and operate end to end, now past ${METRICS.patients} patients: a React Native app, an Express/TypeScript backend, and Supabase. One pipeline routes ${METRICS.ordersPerDay}+ daily orders from app, web, and WhatsApp into a forward-only payment state machine. Webhooks from Razorpay, Shopify, and the warehouse are idempotent against a central log with database unique constraints, and cron reconcilers auto-repair anything that drifts, so provider redeliveries can't corrupt state.`,
     tags: ["React Native", "TypeScript", "Express", "Supabase", "PostgreSQL", "Razorpay"],
     featured: true,
     origin: "work",
@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     id: "ai-clinical-engine",
     title: "Clinical Assessment Engine",
     description:
-      "A points-based clinical engine on validated instruments (IIEF-5, PEDT): eight weighted root-cause scores, ED/PE severity staging, and a RED/AMBER/GREEN risk lane feed a pure-function cart engine that drafts the first-month treatment plan and diffs doctor-corrected runs against the assessment draft — prep drops from 30 minutes to 10-15. All the math is in code; Claude and Groq only format the report and patient copy, after an early version let the LLM add up the scores and it miscounted.",
+      "A points-based clinical engine on validated instruments (IIEF-5, PEDT): eight weighted root-cause scores, ED/PE severity staging, and a RED/AMBER/GREEN risk lane feed a pure-function cart engine that drafts the first-month treatment plan and diffs doctor-corrected runs against the assessment draft; prep drops from 30 minutes to 10-15. All the math is in code; Claude and Groq only format the report and patient copy, after an early version let the LLM add up the scores and it miscounted.",
     tags: ["Claude API", "Groq", "Node.js", "TypeScript", "PDF Generation"],
     featured: true,
     origin: "work",
@@ -38,7 +38,7 @@ export const PROJECTS: Project[] = [
     id: "scout",
     title: "Scout — Open-Source Job-Search Agent",
     description:
-      "A job-search agent (MIT) I built during my own job hunt and open-sourced: ~6,300 lines of TypeScript, no framework, a hand-rolled CLI and HTTP server. It pulls real openings straight from ATS APIs (Greenhouse, Lever, Ashby), HN 'Who is hiring', and RSS feeds — not job boards — scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails with MX-validated address guessing. Thesis: zero ghost jobs.",
+      "A job-search agent (MIT) I built during my own job hunt and open-sourced: ~6,300 lines of TypeScript, no framework, a hand-rolled CLI and HTTP server. It pulls real openings straight from ATS APIs (Greenhouse, Lever, Ashby), HN 'Who is hiring', and RSS feeds, not job boards. It scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails with MX-validated address guessing. Thesis: zero ghost jobs.",
     tags: ["TypeScript", "Anthropic SDK", "CLI", "ATS APIs"],
     githubUrl: "https://github.com/rudra321/find-me-a-job",
     featured: true,
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
     id: "call-center",
     title: "Voice Outreach Stack",
     description:
-      "Voice outreach spanning three telephony generations: a Knowlarity-era call-ops platform (Express + DynamoDB + socket.io console) pooling Vapi and Smallest AI bot calls and auto-assigning outcomes to idle agents, a Tata SmartFlo auto-dialer with a drain-aware campaign rescheduler and clock-decay priority ladder, and today a Plivo WebRTC browser softphone where the browser is the SIP endpoint — with gpt-4o-mini transcript summaries pinned to an enum-terminated format and follow-up state derived into Zoho CRM.",
+      "Voice outreach spanning three telephony generations: a Knowlarity-era call-ops platform (Express + DynamoDB + socket.io console) pooling Vapi and Smallest AI bot calls and auto-assigning outcomes to idle agents, a Tata SmartFlo auto-dialer with a drain-aware campaign rescheduler and clock-decay priority ladder, and today a Plivo WebRTC browser softphone where the browser is the SIP endpoint. Transcript summaries from gpt-4o-mini are pinned to an enum-terminated format, and follow-up state lands in Zoho CRM.",
     tags: ["Plivo", "Tata SmartFlo", "Vapi", "Smallest AI", "Zoho CRM"],
     featured: false,
     origin: "work",

@@ -115,7 +115,7 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled
-            ? "border-b border-hairline bg-background/95"
+            ? "border-b border-hairline bg-background"
             : "bg-transparent"
         )}
         initial={{ y: -100 }}

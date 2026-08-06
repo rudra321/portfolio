@@ -42,7 +42,7 @@ export function Projects() {
               >
                 <span
                   aria-hidden
-                  className="absolute left-0 top-0 h-full w-[2px] origin-top scale-y-0 bg-accent transition-transform duration-[250ms] ease-out group-hover:scale-y-100"
+                  className="absolute -left-6 top-0 hidden h-full w-[2px] origin-top scale-y-0 bg-accent transition-transform duration-[250ms] ease-out group-hover:scale-y-100 lg:block"
                 />
 
                 <div>
@@ -131,7 +131,7 @@ export function Projects() {
         viewport={{ once: true, margin: "-80px" }}
         className="max-w-xl text-[15px] leading-[1.75] text-text-secondary"
       >
-        Work systems live in the answer above. These are mine — open-source, with
+        Work systems live in the answer above. These are mine: open-source, with
         code you can read.
       </motion.p>
     </SectionShell>

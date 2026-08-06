@@ -13,7 +13,7 @@ export const PERSONAL = {
   degree: "B.E. Computer Science",
   gradYear: "2023",
   interests:
-    "Ultimate Frisbee — won gold at the National Open Championship (2025) and the National College Championship (2023).",
+    "Ultimate Frisbee: gold at the National Open Championship (2025) and the National College Championship (2023).",
   lookingFor:
     "Open to product and full-stack engineering roles, especially in healthcare, fintech, and infrastructure.",
   resumeUrl: "/portfolio/resume.pdf",
