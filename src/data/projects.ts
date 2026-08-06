@@ -51,6 +51,7 @@ export const PROJECTS: Project[] = [
       "Tap anywhere on a world map, type a mood, and get an AI-curated color palette and eight real, region-appropriate songs with playable previews (Lagos + 'energetic night out' → Afrobeats). ~3,900 lines of Next.js with a hexagonal architecture (six swappable ports) and an anti-hallucination pipeline: every AI-suggested track is grounded in real Apple charts and verified against the iTunes API before it's shown. Free services only, no Spotify.",
     tags: ["Next.js", "React", "Leaflet", "LLM", "iTunes API"],
     githubUrl: "https://github.com/rudra321/mood-musica",
+    liveUrl: "https://mood-musica.onrender.com/",
     featured: false,
     origin: "personal",
   },

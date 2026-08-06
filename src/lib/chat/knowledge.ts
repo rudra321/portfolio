@@ -35,6 +35,7 @@ export function buildKnowledge(): string {
       `  ${p.description}`,
       `  Tags: ${p.tags.join(", ")}`,
       ...(p.githubUrl ? [`  GitHub: ${p.githubUrl}`] : []),
+      ...(p.liveUrl ? [`  Live: ${p.liveUrl}`] : []),
     ].join("\n")
   ).join("\n\n");
 
