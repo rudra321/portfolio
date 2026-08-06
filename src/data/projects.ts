@@ -8,23 +8,31 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   featured: boolean;
+  /** Built for an employer, or my own project. */
+  origin: "work" | "personal";
+  /** The employer the system was built at — set for `origin: "work"` only. */
+  org?: string;
 }
 
 export const PROJECTS: Project[] = [
   {
     id: "raaz-platform",
     title: "Raaz Healthcare Platform",
-    description: `The healthcare platform I built and operate end to end, now past ${METRICS.patients} patients: a React Native app, an Express/TypeScript backend (${METRICS.endpoints}+ endpoints), and Supabase. One order pipeline routes ${METRICS.ordersPerDay}+ daily orders from app, web, and WhatsApp through a shared, forward-only payment state machine across Razorpay, Shopify, Prozo, and Proship — Redis-backed queues buffer the bursts, and every webhook is handled idempotently against a central log so provider redeliveries can't corrupt state.`,
-    tags: ["React Native", "TypeScript", "AWS Lambda", "Supabase", "Redis", "Razorpay"],
+    description: `The healthcare platform I built and operate end to end, now past ${METRICS.patients} patients: a React Native app, an Express/TypeScript backend, and Supabase. One pipeline routes ${METRICS.ordersPerDay}+ daily orders from app, web, and WhatsApp into a forward-only payment state machine — webhooks from Razorpay, Shopify, and the warehouse are idempotent against a central log with database unique constraints, and cron reconcilers auto-repair anything that drifts, so provider redeliveries can't corrupt state.`,
+    tags: ["React Native", "TypeScript", "Express", "Supabase", "PostgreSQL", "Razorpay"],
     featured: true,
+    origin: "work",
+    org: "Raaz",
   },
   {
     id: "ai-clinical-engine",
     title: "Clinical Assessment Engine",
     description:
-      "A deterministic 100-point clinical scoring engine that computes prognosis and a treatment cart from 9 weighted factors (IIEF-5, IELT, etiology, comorbidities), then hands the doctor a pre-filled record — prep drops from 30 minutes to 10-15. All the math is in code; Claude and Groq only format the report and the Hinglish diet plan, after an early version let the LLM add up the scores and it miscounted.",
+      "A points-based clinical engine on validated instruments (IIEF-5, PEDT): eight weighted root-cause scores, ED/PE severity staging, and a RED/AMBER/GREEN risk lane feed a pure-function cart engine that drafts the first-month treatment plan and diffs doctor-corrected runs against the assessment draft — prep drops from 30 minutes to 10-15. All the math is in code; Claude and Groq only format the report and patient copy, after an early version let the LLM add up the scores and it miscounted.",
     tags: ["Claude API", "Groq", "Node.js", "TypeScript", "PDF Generation"],
     featured: true,
+    origin: "work",
+    org: "Raaz",
   },
   {
     id: "scout",
@@ -34,6 +42,7 @@ export const PROJECTS: Project[] = [
     tags: ["TypeScript", "Anthropic SDK", "CLI", "ATS APIs"],
     githubUrl: "https://github.com/rudra321/find-me-a-job",
     featured: true,
+    origin: "personal",
   },
   {
     id: "mood-musica",
@@ -43,6 +52,7 @@ export const PROJECTS: Project[] = [
     tags: ["Next.js", "React", "Leaflet", "LLM", "iTunes API"],
     githubUrl: "https://github.com/rudra321/mood-musica",
     featured: false,
+    origin: "personal",
   },
   {
     id: "whatsapp-calendar",
@@ -52,6 +62,7 @@ export const PROJECTS: Project[] = [
     tags: ["TypeScript", "Bun", "Hono", "Groq", "Google Calendar API", "Fly.io"],
     githubUrl: "https://github.com/rudra321/whatsapp-calendar",
     featured: false,
+    origin: "personal",
   },
   {
     id: "gis-detection",
@@ -60,13 +71,18 @@ export const PROJECTS: Project[] = [
       "Compiled C++ inference kernels to WebAssembly and paired ONNX Runtime with Meta's Segment Anything Model to run object detection on GIS imagery directly in the browser. It cut end-to-end detection turnaround ~40% versus the server round-trip and eliminated server-side GPU compute entirely.",
     tags: ["WebAssembly", "ONNX Runtime", "SAM", "React", "C++"],
     featured: false,
+    origin: "work",
+    org: "GJ-Map",
   },
   {
     id: "call-center",
-    title: "Real-Time Voice-AI Call System",
-    description: `Voice-AI outreach on Vapi and Smallest AI handling ${METRICS.callsPerMonth}+ calls a month across an auto-dialer, human agents, and AI bots. Event-triggered from app activity, with a P1-P6 time-priority ladder, transcript summaries forced into a machine-parseable token for deterministic extraction, and automatic CRM follow-up state plus live agent handoff over WebSocket/SSE, bridged into Zoho CRM.`,
-    tags: ["Vapi", "Smallest AI", "Socket.io", "DynamoDB", "Zoho CRM"],
+    title: "Voice Outreach Stack",
+    description:
+      "Voice outreach spanning three telephony generations: a Knowlarity-era call-ops platform (Express + DynamoDB + socket.io console) pooling Vapi and Smallest AI bot calls and auto-assigning outcomes to idle agents, a Tata SmartFlo auto-dialer with a drain-aware campaign rescheduler and clock-decay priority ladder, and today a Plivo WebRTC browser softphone where the browser is the SIP endpoint — with gpt-4o-mini transcript summaries pinned to an enum-terminated format and follow-up state derived into Zoho CRM.",
+    tags: ["Plivo", "Tata SmartFlo", "Vapi", "Smallest AI", "Zoho CRM"],
     featured: false,
+    origin: "work",
+    org: "Raaz",
   },
   {
     id: "fraud-dashboard",
@@ -75,6 +91,8 @@ export const PROJECTS: Project[] = [
       "A real-time dashboard that flagged anomalous transactions before settlement so support agents could intervene before money left the account. Fraud losses at SuperPe dropped by roughly half.",
     tags: ["React", "Node.js", "PostgreSQL", "Real-time"],
     featured: false,
+    origin: "work",
+    org: "SuperPe",
   },
   {
     id: "gis-apps",
@@ -83,5 +101,7 @@ export const PROJECTS: Project[] = [
       "Six production React apps for government and enterprise GIS teams, built on the ArcGIS SDK with the Calcite design system: real-time map layers, spatial queries, and bespoke visualization dashboards.",
     tags: ["React", "ArcGIS SDK", "Node.js", "SQL", "GIS"],
     featured: false,
+    origin: "work",
+    org: "GJ-Map",
   },
 ];

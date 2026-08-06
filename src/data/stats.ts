@@ -11,9 +11,6 @@ export const METRICS = {
   mau: "35,000",
   callsPerMonth: "200,000",
   ordersPerDay: "120",
-  endpoints: "200",
-  services: "40",
-  migrations: "70",
 } as const;
 
 // Highlight numbers the AI may surface as a [[ui:stat]] card. Single source of

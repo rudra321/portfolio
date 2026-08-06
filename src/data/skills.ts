@@ -26,7 +26,7 @@ export const SKILLS: SkillCategory[] = [
   },
   {
     category: "Integrations",
-    items: ["Razorpay", "Shopify", "Zoho CRM", "Meta CAPI", "Google Ads API", "WhatsApp Cloud API", "Puppeteer"],
+    items: ["Razorpay", "Shopify", "Zoho CRM", "Meta CAPI", "Google Ads API", "WhatsApp Cloud API", "Plivo", "Tata SmartFlo", "Puppeteer"],
   },
 ];
 

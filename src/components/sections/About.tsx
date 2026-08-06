@@ -44,7 +44,7 @@ export function About() {
         >
           I lead the stack behind a healthcare platform now past{" "}
           <span className="text-foreground">{METRICS.patients} patients</span>: a
-          React Native app, an Express backend on Lambda, a Supabase database,
+          React Native app, an Express backend, a Supabase database,
           and the boring glue that keeps all three in agreement.
         </motion.p>
 

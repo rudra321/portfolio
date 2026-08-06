@@ -29,7 +29,9 @@ export function buildKnowledge(): string {
 
   const projects = PROJECTS.map((p) =>
     [
-      `[${p.id}] ${p.title}${p.featured ? " (featured)" : ""}`,
+      `[${p.id}] ${p.title}${p.featured ? " (featured)" : ""}${
+        p.origin === "work" ? ` — built at ${p.org}` : " — personal, open-source"
+      }`,
       `  ${p.description}`,
       `  Tags: ${p.tags.join(", ")}`,
       ...(p.githubUrl ? [`  GitHub: ${p.githubUrl}`] : []),

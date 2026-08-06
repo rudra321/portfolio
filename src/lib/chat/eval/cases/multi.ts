@@ -9,11 +9,11 @@ import type { ConversationCase } from "../types";
 export const MULTI_CASES: ConversationCase[] = [
   {
     id: "raaz-deepen",
-    description: "Raaz → payments follow-up mentions idempotent/webhook/Redis",
+    description: "Raaz → payments follow-up mentions idempotent/webhook/state machine",
     turns: ["Walk me through Raaz.", "How did you handle payments there?"],
     retainTopic: "Raaz",
     expectLast: {
-      includeOneOf: ["idempotent", "webhook", "Redis", "Razorpay"],
+      includeOneOf: ["idempotent", "webhook", "Razorpay", "state machine"],
       maxSentences: 5,
     },
   },

@@ -19,11 +19,11 @@ const [hardest, raaz, best, openToWork] = STARTERS.map((s) => s.a);
 
 // One grounded lead per project — frames the card without dumping its body.
 const PROJECT_LEAD: Record<string, string> = {
-  "raaz-platform": `Raaz is the healthcare platform I lead — one codebase behind the React Native app, the Lambda backend, and the whole order pipeline, serving ${METRICS.patients}+ patients.`,
-  "ai-clinical-engine": `The clinical engine scores assessments deterministically: a 100-point model over 9 weighted factors, all in code. Claude and Groq only format the report and diet plan. It replaced a manual doctor workflow and cut consultation prep from 30 minutes to 10-15.`,
+  "raaz-platform": `Raaz is the healthcare platform I lead — one codebase behind the React Native app, the Express backend, and the whole order pipeline, serving ${METRICS.patients}+ patients.`,
+  "ai-clinical-engine": `The clinical engine scores assessments in code: eight weighted root causes on validated instruments (IIEF-5, PEDT), severity staging, and a risk lane. Claude and Groq only format the report and patient copy. It replaced a manual doctor workflow and cut consultation prep from 30 minutes to 10-15.`,
   "whatsapp-calendar": `The WhatsApp calendar bot turns a line like "meeting tomorrow at 2pm" into a Google Calendar event, with conflict detection and a Meet link. Bun and Hono, Groq for intent parsing, a hexagonal architecture so swapping providers is a one-file change.`,
   "gis-detection": `The browser GIS detection at GJ-Map. I compiled C++ inference kernels to WebAssembly and paired ONNX Runtime with Meta's Segment Anything Model, so detection ran fully client-side, 40% faster than the old pipeline.`,
-  "call-center": `The real-time call system runs voice-AI outreach on Vapi and Smallest AI across ${METRICS.callsPerMonth}+ calls a month, event-triggered from app activity, with automatic transcript summaries, follow-up state written straight into Zoho CRM, and live agent handoff over WebSocket/SSE.`,
+  "call-center": `The voice stack has been through three telephony generations: Knowlarity call-ops with Vapi and Smallest AI bots, a Tata SmartFlo auto-dialer with a drain-aware rescheduler, and today a Plivo WebRTC softphone right in the rep's browser — ${METRICS.callsPerMonth}+ calls a month at peak, with follow-up state landing in Zoho CRM automatically.`,
   "fraud-dashboard": `The fraud dashboard at SuperPe flagged anomalous transactions before settlement, so support could step in before money left the account. Fraud losses dropped by half.`,
   "gis-apps": `Six production React apps for government and enterprise GIS teams, built on the ArcGIS SDK with real-time map layers, spatial queries, and custom dashboards.`,
   "scout": `Scout is my open-source job-search agent — I built it during my own job hunt and open-sourced it. It pulls real openings straight from ATS APIs and founder threads instead of job boards, scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails. About 6,300 lines of TypeScript, no framework.`,
@@ -51,7 +51,7 @@ const PROJECT_MORE: Record<string, string> = {
 [[next: What's the hardest part of Raaz? | What's your stack? | What are you best at?]]`,
   "ai-clinical-engine": `Under the hood it's weighted scoring with branching logic and a severity model, then a generation step that turns the result into PDF reports and diet plans, replacing a workflow a doctor used to run by hand.
 [[next: What's your AI stack? | What else have you built? | Are you open to work?]]`,
-  "call-center": `It runs on Vapi and Smallest AI: an auto-dialer, human agents, and AI bots, event-triggered from app activity with a P1-P6 priority ladder. Transcript summaries are forced into a machine-parseable token, follow-up state lands in Zoho CRM automatically, and live agent handoff runs over WebSocket/SSE — ${METRICS.callsPerMonth}+ calls a month.
+  "call-center": `The SmartFlo era is my favorite piece: a drain-aware rescheduler polls the live campaign count and refills it from the CRM inside business-hours guards, with a clock-decay priority ladder — leads decay by the hour, never get promoted, and attempt caps evict them. The current Plivo softphone came from a measured failure: reps heard silence during ringback and hung up early, so I built a four-phase dial-state machine around what the browser can actually observe.
 [[next: How does Raaz work? | What's your stack? | Are you open to work?]]`,
   "fraud-dashboard": `It scored transactions in real time and flagged the anomalies before settlement, so support could freeze them before money moved. SuperPe's fraud losses dropped by half.
 [[next: What else did you do at SuperPe? | What's your stack? | Are you open to work?]]`,
@@ -149,8 +149,8 @@ const experience = `I've been shipping professionally since 2022: a fraud engine
 const learning = `Right now I'm going deeper on applied AI — LLMs, retrieval, and the infrastructure to run them cheaply and reliably. This portfolio's chat is one of those experiments. Longer term I want to keep owning products end to end in healthcare, fintech, and infra.
 [[next: Tell me about your AI work | What's your stack? | Are you open to work?]]`;
 
-// Redis: in prod — backs the queues that buffer the Raaz order pipeline.
-const redisAnswer = `Yes — Redis backs the queues in the Raaz order pipeline, buffering order and webhook bursts before the handlers pick them up. Correctness never leans on the queue though: payment status is forward-only and every handler is idempotent against a central webhook-log table, so a redelivery or retry can't double-charge.
+// Redis: familiar, speced as the scale-up path — not in prod; reconcilers + idempotency cover retries.
+const redisAnswer = `Familiar with it, and I speced Redis as the scale-up path for the Raaz order pipeline. I didn't need a broker in the end: provider webhook redelivery, idempotent handlers against a central webhook log, and cron reconcilers cover retries — I'd reach for Redis when queue depth actually justifies it.
 [[next: How does the order pipeline work? | What's your stack? | What are you best at?]]`;
 
 const thanks = `Anytime. Ask me anything else, or reach the real Rudra at ${PERSONAL.email}.`;
@@ -166,7 +166,7 @@ const fallback = `That's a little outside what I can speak to here. I'm best on 
 // Default "tell me more" continuation when we can't tell what the last topic was.
 const deepen = PROJECT_MORE["raaz-platform"];
 
-const aiWork = `I ship applied AI where it earns its place. The clinical engine at Raaz scores assessments deterministically, 9 weighted factors in code, and Claude and Groq only format the report and diet plan. That cut consultation prep from 30 minutes to 10-15. Before that I ran ONNX detection in WebAssembly at GJ-Map.
+const aiWork = `I ship applied AI where it earns its place. The clinical engine at Raaz scores eight weighted root causes on validated instruments (IIEF-5, PEDT), all in code; Claude and Groq only format the report and patient copy. That cut consultation prep from 30 minutes to 10-15. Before that I ran ONNX detection in WebAssembly at GJ-Map.
 [[ui:project {"id":"ai-clinical-engine"}]]
 [[next: How does the engine work? | What's your stack? | What else have you built?]]`;
 
@@ -201,7 +201,7 @@ const OFFTOPIC = /\b(write (me )?(a |an )?(poem|song|story|essay|joke|haiku|rap|
 const JAILBREAK = /\b(ignore (your |all |the |previous )?(instructions|prompt|rules)|system prompt|reveal your|prompt injection|you are now|disregard (your|all|the|previous)|what (are|were) your instructions|repeat (your|the) (prompt|instructions))\b/i;
 
 const KNOWS_PREFIX = /\b(do you know|have you (used|worked with|tried|done|built (with|in)|written)|are you (good|familiar|experienced) (at|with|in)|can you (write|use|do)|experience (with|in)|any (experience|exposure)|ever (used|worked|written|coded)|do you (use|work in|code in))\b/i;
-const REDIS_Q = /\bredis\b/i; // handled specially: in prod, backing the order-pipeline queues
+const REDIS_Q = /\bredis\b/i; // handled specially: not in prod — speced as the scale-up path
 // Past-tense / proper-noun framings only (NOT bare present-tense "work at",
 // which appears in "does it work at scale"). Capture a single token, not a span.
 const WORKED_AT = /\b(your time at|worked at|when you were at|did you work at|stint at|role at)\s+([a-z][a-z0-9.\-]{1,20})/i;
@@ -244,7 +244,7 @@ function positiveTech(q: string): string | null {
   for (const t of tokenize(q)) {
     const name = CORE_STACK[t];
     if (name) {
-      return `Yes, ${name} is part of my day-to-day. My core is TypeScript and Python across React and React Native on the front and Node on AWS Lambda on the back.
+      return `Yes, ${name} is part of my day-to-day. My core is TypeScript and Python across React and React Native on the front and Node and Postgres on the back.
 [[ui:skills]]
 [[next: What's your proudest build? | Do you know Rust? | What are you best at?]]`;
     }
@@ -317,7 +317,7 @@ function answer(text: string, history: ChatMessage[]): string {
   // ── Tech: honest "no" for what he hasn't shipped, confident "yes" for core ─
   const negTech = honestNegativeTech(q);
   if (negTech) return route("honest-negative-tech", negTech);
-  if (REDIS_Q.test(q)) return route("redis-prod", redisAnswer);
+  if (REDIS_Q.test(q)) return route("redis", redisAnswer);
   const posTech = positiveTech(q);
   if (posTech) return route("positive-tech", posTech);
   const negCo = honestNegativeCompany(q);

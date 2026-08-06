@@ -30,7 +30,7 @@ export const SINGLE_CASES: EvalCase[] = [
       tag: "project",
       projectId: "raaz-platform",
       mustInclude: ["Raaz"],
-      includeOneOf: ["React Native", "Lambda", "Supabase", METRICS.patients],
+      includeOneOf: ["React Native", "Express", "Supabase", METRICS.patients],
       maxSentences: 5,
     },
   },
