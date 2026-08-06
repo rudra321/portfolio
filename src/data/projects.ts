@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     id: "gis-apps",
     title: "Enterprise GIS Applications",
     description:
-      "Six production React apps for government and enterprise GIS teams, built on the ArcGIS SDK with the Calcite design system: real-time map layers, spatial queries, and bespoke visualization dashboards.",
+      "Six production React apps for government and enterprise GIS teams on the ArcGIS SDK with the Calcite design system, built around heavy multi-temporal satellite imagery: years of the same land side by side, so roads appearing and extending, cropland shifting, and construction filling in all become visible. Real-time map layers, spatial queries, and bespoke dashboards.",
     tags: ["React", "ArcGIS SDK", "Node.js", "SQL", "GIS"],
     featured: false,
     origin: "work",

@@ -30,8 +30,8 @@ export const EXPERIENCES: Experience[] = [
     period: "May 2024 - Oct 2024",
     location: "Udaipur, India",
     description: [
-      "Moved GIS object detection into the browser by compiling C++ inference kernels to WebAssembly and pairing ONNX Runtime with Meta's Segment Anything Model. It cut end-to-end detection turnaround by ~40% versus the server round-trip and removed the server-side GPU dependency entirely.",
-      "Shipped six production React apps for government and enterprise GIS teams on the ArcGIS SDK with the Calcite design system: real-time map layers, spatial queries, and custom visualization dashboards.",
+      "Built six production React apps on the ArcGIS SDK with the Calcite design system for government and enterprise GIS teams working with heavy multi-temporal satellite imagery. The apps put years of imagery of the same land side by side so development becomes visible: roads appearing and extending, cropland shifting, construction filling in over time.",
+      "As one part of that, moved object detection into the browser: compiled C++ inference kernels to WebAssembly and paired ONNX Runtime with Meta's Segment Anything Model, cutting detection turnaround by ~40% versus the server round-trip and removing the server-side GPU dependency entirely.",
       "Built the company's Node.js and SQL backend from scratch, including the geospatial ingestion, validation, and email-based submission-tracking pipelines that fed every map, plus the company website.",
     ],
     technologies: ["React", "WebAssembly", "ONNX Runtime", "Node.js", "ArcGIS SDK", "SQL"],

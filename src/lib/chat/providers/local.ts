@@ -25,7 +25,7 @@ const PROJECT_LEAD: Record<string, string> = {
   "gis-detection": `The browser GIS detection at GJ-Map. I compiled C++ inference kernels to WebAssembly and paired ONNX Runtime with Meta's Segment Anything Model, so detection ran fully client-side, 40% faster than the old pipeline.`,
   "call-center": `The voice stack has been through three telephony generations: Knowlarity call-ops with Vapi and Smallest AI bots, a Tata SmartFlo auto-dialer with a drain-aware rescheduler, and today a Plivo WebRTC softphone right in the rep's browser. That stack handles ${METRICS.callsPerMonth}+ calls a month at peak, with follow-up state landing in Zoho CRM automatically.`,
   "fraud-dashboard": `The fraud dashboard at SuperPe flagged anomalous transactions before settlement, so support could step in before money left the account. Fraud losses dropped by half.`,
-  "gis-apps": `Six production React apps for government and enterprise GIS teams, built on the ArcGIS SDK with real-time map layers, spatial queries, and custom dashboards.`,
+  "gis-apps": `Six production React apps for GIS teams on the ArcGIS SDK, built around heavy multi-temporal satellite imagery: put years of the same land side by side and you can watch roads appear and extend, and cropland shift. Real-time layers, spatial queries, custom dashboards.`,
   "scout": `Scout is my open-source job-search agent. I built it during my own job hunt and open-sourced it. It pulls real openings straight from ATS APIs and founder threads instead of job boards, scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails. About 6,300 lines of TypeScript, no framework.`,
   "mood-musica": `MoodMusica is map-first music discovery: tap a spot on the world map, type a mood, and get a color palette and eight real, region-appropriate songs. The fun part is the anti-hallucination pipeline, where every AI-picked track is grounded in real Apple charts and verified against the iTunes API before it's shown, so nothing fake gets through.`,
 };
@@ -47,7 +47,7 @@ const PROJECT_NEXT: Record<string, string> = {
 const PROJECT_MORE: Record<string, string> = {
   "raaz-platform": `The piece I'm proudest of is the Raaz order pipeline. Orders from app, web, and WhatsApp converge on one payment state machine that only moves forward, so an out-of-order 'failed' webhook can never overwrite a 'captured'. Every handler is idempotent against a central webhook log, so Razorpay, Shopify, and warehouse redeliveries are always safe.
 [[next: How does the call-center system work? | What broke at scale? | What's your stack?]]`,
-  "gis-detection": `Beyond the detection model, at GJ-Map I shipped six production React apps for government and enterprise GIS teams on the ArcGIS SDK, and built the Node and SQL backend from scratch, including the automated geospatial ingestion pipelines that fed every map.
+  "gis-detection": `The detection model was one part of a bigger job: six production React apps on the ArcGIS SDK for teams working with heavy multi-temporal satellite imagery, where years of the same land sit side by side and you can watch roads appear and cropland shift. I also built the Node and SQL backend from scratch, including the automated geospatial ingestion pipelines that fed every map.
 [[next: What's the hardest part of Raaz? | What's your stack? | What are you best at?]]`,
   "ai-clinical-engine": `Under the hood it's weighted scoring with branching logic and a severity model, then a generation step that turns the result into PDF reports and diet plans, replacing a workflow a doctor used to run by hand.
 [[next: What's your AI stack? | What else have you built? | Are you open to work?]]`,
@@ -64,7 +64,7 @@ const PROJECT_MORE: Record<string, string> = {
 // Company-specific experience leads (retrieval returns the right one by company).
 const EXPERIENCE_LEAD: Record<string, string> = {
   Raaz: raaz,
-  "GJ-Map Solutions": `At GJ-Map I built the browser-based GIS detection: C++ inference compiled to WebAssembly, ONNX Runtime paired with Meta's Segment Anything Model, 40% faster than the old pipeline. I also shipped six production React apps on the ArcGIS SDK and built the Node and SQL backend from scratch.
+  "GJ-Map Solutions": `At GJ-Map I built React apps for heavy multi-temporal satellite imagery: years of the same land side by side, so you can watch roads appear and extend and cropland shift over time. One part of that was browser-based detection, with C++ inference compiled to WebAssembly and ONNX Runtime paired with Meta's Segment Anything Model, 40% faster than the old pipeline. I also built the Node and SQL backend from scratch.
 [[ui:experience]]
 [[next: How did the WASM detection work? | What's the hardest part of Raaz? | What are you best at?]]`,
   SuperPe: `At SuperPe I built a real-time fraud-detection dashboard that cut fraud losses in half, plus the React Native onboarding and payments checkout for a flow handling 50,000+ transactions a day.

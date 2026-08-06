@@ -32,8 +32,7 @@ export function Contact() {
           className="max-w-lg font-serif text-[22px] font-normal italic leading-[1.55] text-foreground/90"
         >
           Email is the best way to reach me. I read everything and usually reply
-          within a day. Hiring, collaboration, or a stray question about
-          compiling C++ to WebAssembly: all welcome.
+          within a day. Hiring, collaboration, or a sharp question: all welcome.
         </motion.p>
 
         <motion.p
