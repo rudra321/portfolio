@@ -27,62 +27,82 @@ export function Projects() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
         >
-          {personal.map((project, idx) => (
-            <motion.article
-              key={project.id}
-              variants={typeset}
-              className="group relative border-t border-hairline py-10 lg:grid lg:grid-cols-[220px_1fr] lg:gap-x-10"
-            >
-              <span
-                aria-hidden
-                className="absolute left-0 top-0 h-full w-[2px] origin-top scale-y-0 bg-accent transition-transform duration-[250ms] ease-out group-hover:scale-y-100"
-              />
+          {personal.map((project, idx) => {
+            // "Scout — Open-Source Job-Search Agent" splits into the bare name
+            // (the heading) and a descriptor that rides above it as an eyebrow.
+            const cut = project.title.indexOf(" — ");
+            const name = cut === -1 ? project.title : project.title.slice(0, cut);
+            const descriptor = cut === -1 ? undefined : project.title.slice(cut + 3);
 
-              <div>
-                <p className="font-mono text-xs font-medium text-accent">
-                  P.{String(idx + 1).padStart(2, "0")}
-                </p>
-                {(project.githubUrl || project.liveUrl) && (
-                  <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 lg:flex-col">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${project.title} — GitHub (opens in new tab)`}
-                        className={linkClass}
-                      >
-                        github <span aria-hidden>↗</span>
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${project.title} — live site (opens in new tab)`}
-                        className={linkClass}
-                      >
-                        live <span aria-hidden>↗</span>
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
+            return (
+              <motion.article
+                key={project.id}
+                variants={typeset}
+                className="group relative border-t border-hairline py-9 last:border-b lg:grid lg:grid-cols-[220px_1fr] lg:gap-x-10"
+              >
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-0 h-full w-[2px] origin-top scale-y-0 bg-accent transition-transform duration-[250ms] ease-out group-hover:scale-y-100"
+                />
 
-              <div className="mt-5 lg:mt-0">
-                <h3 className="font-sans text-2xl font-semibold tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent">
-                  {project.title}
-                </h3>
-                <p className="mt-2 max-w-xl text-[15px] leading-[1.75] text-text-secondary">
-                  {project.description}
-                </p>
-                <p className="mt-4 font-mono text-[11px] tracking-[0.02em] text-text-secondary">
-                  {project.tags.join(" · ")}
-                </p>
-              </div>
-            </motion.article>
-          ))}
+                <div>
+                  <p className="font-mono text-xs font-medium text-accent">
+                    P.{String(idx + 1).padStart(2, "0")}
+                  </p>
+                  {(project.githubUrl || project.liveUrl) && (
+                    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 lg:flex-col">
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} — GitHub (opens in new tab)`}
+                          className={linkClass}
+                        >
+                          github <span aria-hidden>↗</span>
+                        </a>
+                      )}
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} — live site (opens in new tab)`}
+                          className={linkClass}
+                        >
+                          live <span aria-hidden>↗</span>
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-4 lg:mt-0">
+                  {descriptor && (
+                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary">
+                      {descriptor}
+                    </p>
+                  )}
+                  <h3 className="mt-1.5 font-sans text-[1.75rem] font-semibold leading-tight tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent">
+                    {name}
+                  </h3>
+                  <p className="mt-3 max-w-[36rem] text-[15px] leading-[1.7] text-text-secondary">
+                    {project.description}
+                  </p>
+                  <ul className="mt-5 flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <li
+                        key={tag}
+                        className="rounded-md border border-card-border px-2.5 py-1 font-mono text-[11px] text-text-secondary"
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.article>
+            );
+          })}
         </motion.div>
       }
     >
@@ -93,8 +113,8 @@ export function Projects() {
         viewport={{ once: true, margin: "-80px" }}
         className="max-w-xl text-[15px] leading-[1.75] text-text-secondary"
       >
-        The systems I build at work live in the answer above. These are my own —
-        open-source, with code you can read.
+        Work systems live in the answer above. These are mine — open-source, with
+        code you can read.
       </motion.p>
     </SectionShell>
   );

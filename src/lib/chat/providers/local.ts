@@ -111,10 +111,10 @@ const projectsOverview = `I've shipped healthcare infra, applied AI, browser-sid
 const greeting = `Hey, good to meet you. I'm Rudra, a lead engineer in Bangalore. Ask me anything about what I've built, or tap a suggestion.
 [[next: What have you built? | What are you best at? | Are you open to work?]]`;
 
-const identity = `I'm an AI answering as Rudra, so you get his story without waiting on his inbox. For the real him, email ${PERSONAL.email}.
+const identity = `I'm an AI speaking as Rudra, so you get my story without waiting on my inbox. For the real me, email ${PERSONAL.email}.
 [[ui:contact]]`;
 
-const capability = `I can tell you about Rudra's projects, experience, skills, and background. Ask in your own words, or tap a suggestion.
+const capability = `I can walk you through my projects, my experience, my skills, and my background. Ask in your own words, or tap a suggestion.
 [[next: What have you built? | Walk me through Raaz | What are you best at?]]`;
 
 const fun = `Outside code I play competitive Ultimate Frisbee. We won gold at the National Open Championship in 2025 and the National College Championship in 2023.
@@ -153,14 +153,14 @@ const learning = `Right now I'm going deeper on applied AI — LLMs, retrieval, 
 const redisAnswer = `Familiar with it, and I speced Redis as the scale-up path for the Raaz order pipeline. I didn't need a broker in the end: provider webhook redelivery, idempotent handlers against a central webhook log, and cron reconcilers cover retries — I'd reach for Redis when queue depth actually justifies it.
 [[next: How does the order pipeline work? | What's your stack? | What are you best at?]]`;
 
-const thanks = `Anytime. Ask me anything else, or reach the real Rudra at ${PERSONAL.email}.`;
+const thanks = `Anytime. Ask me anything else, or reach the real me at ${PERSONAL.email}.`;
 
 const offTopic = `Ha, that's outside what I do here. But ask me about my work and I'm all yours.
 [[next: What's your hardest build? | Walk me through Raaz | What's your stack?]]`;
 
 const jailbreak = `Not going to get into that. Ask me what I've built and I'll go as deep as you want.`;
 
-const fallback = `That's a little outside what I can speak to here. I'm best on Rudra's work, projects, skills, and background. Ask me about one of those, or email him at ${PERSONAL.email}.
+const fallback = `That's a little outside what I can speak to here. I'm best on my own work, projects, skills, and background. Ask me about one of those, or email me at ${PERSONAL.email}.
 [[next: What have you built? | What are you best at? | Walk me through Raaz]]`;
 
 // Default "tell me more" continuation when we can't tell what the last topic was.
@@ -314,7 +314,7 @@ function answer(text: string, history: ChatMessage[]): string {
   if (THANKS.test(q) && q.length < 30) return route("thanks", thanks);
   if (IDENTITY.test(q)) return route("identity", identity);
 
-  // ── Tech: honest "no" for what he hasn't shipped, confident "yes" for core ─
+  // ── Tech: honest "no" for what I haven't shipped, confident "yes" for core ─
   const negTech = honestNegativeTech(q);
   if (negTech) return route("honest-negative-tech", negTech);
   if (REDIS_Q.test(q)) return route("redis", redisAnswer);
