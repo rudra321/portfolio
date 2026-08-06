@@ -9,7 +9,7 @@ import { Contact } from "@/components/sections/Contact";
 const TRANSCRIPT_INDEX = [
   { index: "01", question: "who are you?", href: "#about" },
   { index: "02", question: "where have you worked?", href: "#experience" },
-  { index: "03", question: "what have you shipped?", href: "#projects" },
+  { index: "03", question: "what do you build on the side?", href: "#projects" },
   { index: "04", question: "what do you work with?", href: "#skills" },
   { index: "05", question: "how do we talk?", href: "#contact" },
 ] as const;
