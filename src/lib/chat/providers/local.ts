@@ -20,11 +20,11 @@ const [hardest, raaz, best, openToWork] = STARTERS.map((s) => s.a);
 // One grounded lead per project — frames the card without dumping its body.
 const PROJECT_LEAD: Record<string, string> = {
   "raaz-platform": `Raaz is the healthcare platform I lead: one codebase behind the React Native app, the Express backend, and the whole order pipeline, serving ${METRICS.patients}+ patients.`,
-  "ai-clinical-engine": `The clinical engine scores assessments in code: eight weighted root causes on validated instruments (IIEF-5, PEDT), severity staging, and a risk lane. Claude and Groq only format the report and patient copy. It replaced a manual doctor workflow and cut consultation prep from 30 minutes to 10-15.`,
+  "ai-clinical-engine": `The clinical engine scores assessments in code: eight weighted root causes on validated instruments (IIEF-5, IELT bands), severity staging, and a risk lane. Claude and Groq only format the report and patient copy. It replaced a manual doctor workflow and cut consultation prep from 30 minutes to 10-15.`,
   "whatsapp-calendar": `The WhatsApp calendar bot turns a line like "meeting tomorrow at 2pm" into a Google Calendar event, with conflict detection and a Meet link. Bun and Hono, Groq for intent parsing, a hexagonal architecture so swapping providers is a one-file change.`,
   "gis-detection": `The browser GIS detection at GJ-Map. I compiled C++ inference kernels to WebAssembly and paired ONNX Runtime with Meta's Segment Anything Model, so detection ran fully client-side, 40% faster than the old pipeline.`,
-  "call-center": `The voice stack has been through three telephony generations: Knowlarity call-ops with Vapi and Smallest AI bots, a Tata SmartFlo auto-dialer with a drain-aware rescheduler, and today a Plivo WebRTC softphone right in the rep's browser. That stack handles ${METRICS.callsPerMonth}+ calls a month at peak, with follow-up state landing in Zoho CRM automatically.`,
-  "fraud-dashboard": `The fraud dashboard at SuperPe flagged anomalous transactions before settlement, so support could step in before money left the account. Fraud losses dropped by half.`,
+  "call-center": `The voice stack has been through three telephony generations: I operated and extended the Knowlarity call-ops platform (Vapi and Smallest AI bots) and the Tata SmartFlo auto-dialer with its drain-aware rescheduler, then built today's Plivo WebRTC softphone right in the rep's browser. That stack handles ${METRICS.callsPerMonth}+ calls a month at peak, with follow-up state landing in Zoho CRM automatically.`,
+  "fraud-dashboard": `The fraud dashboard at SuperPe flagged anomalous transactions before settlement, so support could step in before money left the account.`,
   "gis-apps": `Six production React apps for GIS teams on the ArcGIS SDK, built around heavy multi-temporal satellite imagery: put years of the same land side by side and you can watch roads appear and extend, and cropland shift. Real-time layers, spatial queries, custom dashboards.`,
   "scout": `Scout is my open-source job-search agent. I built it during my own job hunt and open-sourced it. It pulls real openings straight from ATS APIs and founder threads instead of job boards, scores them with a zero-dependency heuristic plus an optional LLM pass, and drafts cover letters and cold emails. Plain TypeScript, no framework.`,
   "mood-musica": `MoodMusica is map-first music discovery: tap a spot on the world map, type a mood, and get a color palette and eight real, region-appropriate songs. The fun part is the anti-hallucination pipeline, where every AI-picked track is grounded in real Apple charts and verified against the iTunes API before it's shown, so nothing fake gets through.`,
@@ -67,7 +67,7 @@ const EXPERIENCE_LEAD: Record<string, string> = {
   "GJ-Map Solutions": `At GJ-Map I built React apps for heavy multi-temporal satellite imagery: years of the same land side by side, so you can watch roads appear and extend and cropland shift over time. One part of that was browser-based detection, with C++ inference compiled to WebAssembly and ONNX Runtime paired with Meta's Segment Anything Model, 40% faster than the old pipeline. I also built the Node and SQL backend from scratch.
 [[ui:experience]]
 [[next: How did the WASM detection work? | What's the hardest part of Raaz? | What are you best at?]]`,
-  SuperPe: `At SuperPe I built a real-time fraud-detection dashboard that cut fraud losses in half, plus the React Native onboarding and payments checkout for a flow handling 50,000+ transactions a day.
+  SuperPe: `At SuperPe I built a real-time fraud-flagging dashboard that surfaced anomalous transactions before settlement, plus the React Native onboarding and payments checkout.
 [[ui:experience]]
 [[next: What did you do at Raaz? | What's your stack? | Are you open to work?]]`,
 };
@@ -166,7 +166,7 @@ const fallback = `That's a little outside what I can speak to here. I'm best on 
 // Default "tell me more" continuation when we can't tell what the last topic was.
 const deepen = PROJECT_MORE["raaz-platform"];
 
-const aiWork = `I ship applied AI where it earns its place. The clinical engine at Raaz scores eight weighted root causes on validated instruments (IIEF-5, PEDT), all in code; Claude and Groq only format the report and patient copy. That cut consultation prep from 30 minutes to 10-15. Before that I ran ONNX detection in WebAssembly at GJ-Map.
+const aiWork = `I ship applied AI where it earns its place. The clinical engine at Raaz scores eight weighted root causes on validated instruments (IIEF-5, IELT bands), all in code; Claude and Groq only format the report and patient copy. That cut consultation prep from 30 minutes to 10-15. Before that I ran ONNX detection in WebAssembly at GJ-Map.
 [[ui:project {"id":"ai-clinical-engine"}]]
 [[next: How does the engine work? | What's your stack? | What else have you built?]]`;
 

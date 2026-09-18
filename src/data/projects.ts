@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     id: "ai-clinical-engine",
     title: "Clinical Assessment Engine",
     description:
-      "A points-based clinical engine on validated instruments (IIEF-5, PEDT): eight weighted root-cause scores, ED/PE severity staging, and a RED/AMBER/GREEN risk lane feed a pure-function cart engine that drafts the first-month treatment plan and diffs doctor-corrected runs against the assessment draft; prep drops from 30 minutes to 10-15. All the math is in code; Claude and Groq only format the report and patient copy, after an early version let the LLM add up the scores and it miscounted.",
+      "A points-based clinical engine on validated instruments (IIEF-5, IELT bands): eight weighted root-cause scores, ED/PE severity staging, and a RED/AMBER/GREEN risk lane feed a pure-function cart engine that drafts the first-month treatment plan and diffs doctor-corrected runs against the assessment draft; prep drops from 30 minutes to 10-15. All the math is in code; Claude and Groq only format the report and patient copy, after an early version let the LLM add up the scores and it miscounted.",
     tags: ["Claude API", "Groq", "Node.js", "TypeScript", "PDF Generation"],
     featured: true,
     origin: "work",
@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
     id: "call-center",
     title: "Voice Outreach Stack",
     description:
-      "Voice outreach spanning three telephony generations: a Knowlarity-era call-ops platform (Express + DynamoDB + socket.io console) pooling Vapi and Smallest AI bot calls and auto-assigning outcomes to idle agents, a Tata SmartFlo auto-dialer with a drain-aware campaign rescheduler and clock-decay priority ladder, and today a Plivo WebRTC browser softphone where the browser is the SIP endpoint. Transcript summaries from gpt-4o-mini are pinned to an enum-terminated format, and follow-up state lands in Zoho CRM.",
+      "Three telephony generations: operated and extended the Knowlarity-era call-ops platform (Express + DynamoDB + socket.io console) that pooled Vapi and Smallest AI bot calls and the Tata SmartFlo auto-dialer with its drain-aware campaign rescheduler, then built today's Plivo WebRTC browser softphone where the browser is the SIP endpoint. Transcript summaries from gpt-4o-mini are pinned to an enum-terminated format, and follow-up state lands in Zoho CRM.",
     tags: ["Plivo", "Tata SmartFlo", "Vapi", "Smallest AI", "Zoho CRM"],
     featured: false,
     origin: "work",
@@ -89,7 +89,7 @@ export const PROJECTS: Project[] = [
     id: "fraud-dashboard",
     title: "Fraud-Detection Dashboard",
     description:
-      "A real-time dashboard that flagged anomalous transactions before settlement so support agents could intervene before money left the account. Fraud losses at SuperPe dropped by roughly half.",
+      "A real-time dashboard that flagged anomalous transactions before settlement so support agents could intervene before money left the account.",
     tags: ["React", "Node.js", "PostgreSQL", "Real-time"],
     featured: false,
     origin: "work",

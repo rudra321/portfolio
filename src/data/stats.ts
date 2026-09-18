@@ -23,6 +23,4 @@ export const STATS: Stat[] = [
   { value: "46%", label: "paid-ad attribution lift" },
   { value: "10-15 min", label: "consultation prep, down from 30" },
   { value: "40%", label: "faster GIS detection" },
-  { value: "50%", label: "fraud losses cut at SuperPe" },
-  { value: "50,000+", label: "transactions/day" },
 ];

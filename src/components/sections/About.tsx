@@ -55,8 +55,7 @@ export function About() {
           Before Raaz I worked on browser-side ML at GJ-Map, compiling C++
           inference kernels to WebAssembly so an ONNX model could run on a
           government analyst&apos;s laptop without a server round-trip. Before
-          that I built a real-time fraud dashboard at SuperPe that cut losses by
-          half.
+          that I built a real-time fraud dashboard at SuperPe that flagged anomalous transactions before settlement.
         </motion.p>
 
         <motion.p
